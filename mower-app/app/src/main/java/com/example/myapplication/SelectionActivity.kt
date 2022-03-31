@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.Navigation.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class SelectionActivity : AppCompatActivity() {

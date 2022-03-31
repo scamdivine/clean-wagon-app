@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">My Application</string>
     <string name="loginButton">Login</string>
     <string name="app_name">Clean Wagon</string>
     <string name="settings">Settings</string>
