@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_nav"
+    app:startDestination="@id/MapFragment">
+
+    <fragment
+        android:id="@+id/MapFragment"
+        android:name="com.example.myapplication.MapFragment"
+        android:label="fragment_completed"
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_MapFragment_to_SettingsFragment"
+            app:destination="@id/SettingsFragment" />
+        <action
+            android:id="@+id/action_MapFragment_to_ManualDriveFragment"
+            app:destination="@id/ManualDriveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SettingsFragment"
+        android:name="com.example.myapplication.ManualDriveFragment"
+        android:label="fragment_edit_group"
+        tools:layout="@layout/fragment_manual_drive" >
+        <action
+            android:id="@+id/action_SettingsFragment_to_MapFragment"
+            app:destination="@id/MapFragment" />
+        <action
+            android:id="@+id/action_SettingsFragment_to_ManualDriveFragment"
+            app:destination="@id/ManualDriveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ManualDriveFragment"
+        android:name="com.example.myapplication.SettingsFragment"
+        android:label="fragment_add_new"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_ManualDriveFragment_to_MapFragment"
+            app:destination="@id/MapFragment" />
+        <action
+            android:id="@+id/action_ManualDriveFragment_to_SettingsFragment"
+            app:destination="@id/SettingsFragment" />
+    </fragment>
+</navigation>
