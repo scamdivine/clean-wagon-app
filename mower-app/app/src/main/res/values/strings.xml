@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="loginButton">Login</string>
+    <string name="signInButton">Sign In</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="use_facebook">Use Facebook</string>
+    <string name="create_a_new_account">Create a new account</string>
+    <string name="use_google">Use Google</string>
 </resources>
