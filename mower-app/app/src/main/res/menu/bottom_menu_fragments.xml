@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/ManualDriveFragment"
+        android:title="@string/map"
+        android:icon="@drawable/ic_launcher_background" />
+
+    <item
+        android:id="@+id/MapFragment"
+        android:title="@string/manual_drive"
+        android:icon="@drawable/ic_launcher_background" />
+
+    <item
+        android:id="@+id/SettingsFragment"
+        android:title="@string/settings"
+        android:icon="@drawable/ic_launcher_background"/>
+</menu>
