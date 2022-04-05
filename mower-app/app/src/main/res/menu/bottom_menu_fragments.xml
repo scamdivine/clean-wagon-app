@@ -3,16 +3,16 @@
 
     <item
         android:id="@+id/ManualDriveFragment"
-        android:title="@string/map"
-        android:icon="@drawable/ic_launcher_background" />
+        android:title="@string/manual_drive"
+        android:icon="@drawable/manualdrive" />
 
     <item
         android:id="@+id/MapFragment"
-        android:title="@string/manual_drive"
-        android:icon="@drawable/ic_launcher_background" />
+        android:title="@string/map"
+        android:icon="@drawable/map" />
 
     <item
         android:id="@+id/SettingsFragment"
         android:title="@string/settings"
-        android:icon="@drawable/ic_launcher_background"/>
+        android:icon="@drawable/settings"/>
 </menu>

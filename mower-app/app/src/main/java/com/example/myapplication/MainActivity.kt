@@ -26,14 +26,6 @@ class MainActivity : AppCompatActivity() ,
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
-            R.id.ManualDriveFragment -> {
-                val bundle = Bundle()
-                //bundle.putString(GROUPID, groupId)
-                val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
-                val navController = findNavController(findViewById(R.id.fragment))
-                navView.setupWithNavController(navController)
-                navController.navigate(R.id.ManualDriveFragment, bundle)
-            }
 
             R.id.MapFragment -> {
                 val bundle = Bundle()
@@ -43,6 +35,14 @@ class MainActivity : AppCompatActivity() ,
                 navController.saveState()
                 navView.setupWithNavController(navController)
                 navController.navigate(R.id.MapFragment, bundle)
+            }
+            R.id.ManualDriveFragment -> {
+                val bundle = Bundle()
+                //bundle.putString(GROUPID, groupId)
+                val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
+                val navController = findNavController(findViewById(R.id.fragment))
+                navView.setupWithNavController(navController)
+                navController.navigate(R.id.ManualDriveFragment, bundle)
             }
 
             R.id.SettingsFragment -> {
