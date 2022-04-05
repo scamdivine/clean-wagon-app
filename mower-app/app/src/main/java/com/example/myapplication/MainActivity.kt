@@ -28,8 +28,8 @@ class MainActivity : AppCompatActivity() ,
         val bundle = Bundle()
         val navController = findNavController(findViewById(R.id.fragment))
         navController.navigate(R.id.MapFragment, bundle)
-//        val navView: BottomNavigationView = findViewById(R.id.MapFragment)
-        //navView.setOnNavigationItemSelectedListener(this)
+        val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        navView.setOnNavigationItemSelectedListener(this)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
