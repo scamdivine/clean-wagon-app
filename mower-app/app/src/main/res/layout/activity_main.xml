@@ -14,6 +14,26 @@
         app:menu="@menu/bottom_menu_fragments"
         android:id="@+id/bottomNavigationView" />
 
+
+    <ImageView
+        android:id="@+id/returnArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/arrowleft"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/returnText"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mymowers"
+        app:layout_constraintStart_toEndOf="@id/returnArrow"
+        app:layout_constraintTop_toTopOf="@id/returnArrow" />
+
     <fragment
         android:id="@+id/fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"

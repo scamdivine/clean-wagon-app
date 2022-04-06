@@ -4,30 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.annotation.NonNull
-import androidx.annotation.Nullable
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation.findNavController
 
 
 class MapFragment: Fragment() {
     override fun onCreateView(
-        @NonNull inflater: LayoutInflater, @Nullable container: ViewGroup?,
-        @Nullable savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        //var toggleImage = inflater.context
-        inflater.inflate(R.layout.fragment_map, container, false).findViewById<ImageView>(R.id.toggleButton).setOnClickListener{
-            var toggleValue = 0;
-            if(toggleValue == 0){
-                inflater.inflate(R.layout.fragment_map, container, false).findViewById<ImageView>(R.id.toggleButton).setImageResource(R.drawable.toggleon)
-                toggleValue = 1;
-            }
-            else {
-                inflater.inflate(R.layout.fragment_map, container, false).findViewById<ImageView>(R.id.toggleButton).setImageResource(R.drawable.toggleoff)
-                toggleValue = 0;
-            }
+        val view = inflater.inflate(R.layout.fragment_map, container, false)
+        view.findViewById<ImageButton>(R.id.toggleButtonOn).setOnClickListener{
+            findNavController(view).navigate(R.id.action_MapFragment_to_OfflineFragment)
         }
-        return inflater.inflate(R.layout.fragment_map, container, false)
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

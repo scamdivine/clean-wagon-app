@@ -5,9 +5,10 @@ package com.example.myapplication
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.myapplication.R.id.fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() ,
@@ -17,9 +18,9 @@ class MainActivity : AppCompatActivity() ,
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val bundle = Bundle()
-        val navController = findNavController(findViewById(R.id.fragment))
-        navController.navigate(R.id.MapFragment, bundle)
+        val navController = findNavController(fragment)
         val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        navController.navigate(R.id.offlineFragment, bundle)
         navView.setOnNavigationItemSelectedListener(this)
     }
 
@@ -28,19 +29,21 @@ class MainActivity : AppCompatActivity() ,
         when (item.itemId) {
 
             R.id.MapFragment -> {
-                val bundle = Bundle()
+                //val bundle = Bundle()
                 //bundle.putString(GROUPID, groupId)
                 val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
-                val navController = Navigation.findNavController(findViewById(R.id.fragment))
+                val navController = findNavController(findViewById(fragment))
                 navController.saveState()
                 navView.setupWithNavController(navController)
-                navController.navigate(R.id.MapFragment, bundle)
+                navController.navigate(R.id.MapFragment, Bundle())
             }
+
             R.id.ManualDriveFragment -> {
                 val bundle = Bundle()
                 //bundle.putString(GROUPID, groupId)
                 val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
-                val navController = findNavController(findViewById(R.id.fragment))
+                val navController = findNavController(findViewById(fragment))
+                navController.saveState()
                 navView.setupWithNavController(navController)
                 navController.navigate(R.id.ManualDriveFragment, bundle)
             }
@@ -49,7 +52,7 @@ class MainActivity : AppCompatActivity() ,
                 val bundle = Bundle()
                 //bundle.putString(GROUPID, groupId)
                 val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
-                val navController = Navigation.findNavController(findViewById(R.id.fragment))
+                val navController = findNavController(findViewById(fragment))
                 navController.saveState()
                 navView.setupWithNavController(navController)
                 navController.navigate(R.id.SettingsFragment, bundle)
