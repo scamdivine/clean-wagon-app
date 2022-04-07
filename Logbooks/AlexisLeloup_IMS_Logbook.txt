@@ -1,0 +1,20 @@
+WEEK 1 :
+28/3 - 45min :
+- Introduction meeting with the team
+- Decision about repartition of people on the three different teams of the project.
+I'm joining the app's development team
+- Selection of team's Scrum Master and Product Owner
+
+30/3 - 3H :
+- First meeting with the team about working on the project
+- Instancing of our project's trello board (one for each team)
+- Instancing of Github repositories (one for each team)
+- Decision of the technology we are going to use to develop our app
+Since we needed to code with a native language, we decided to use Kotlin.
+- Creation of an ULM diagram to identify our needs for the app
+- Instancing of our Android Studio project with a display of a basic "Hello World"
+- I was affected to the conception of the app prototype and started its conception on figma (splash / login screen)
+
+31/3 - 4H :
+- Kept prototype development with Mower Selection, Map and Settings screens
+- Weekly meeting with the whole team to update other poles about our progression and preliminary goals for next week

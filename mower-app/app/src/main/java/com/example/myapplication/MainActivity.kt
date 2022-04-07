@@ -3,6 +3,7 @@
 package com.example.myapplication
 
 import android.content.Intent
+import android.widget.Button
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.TextView
@@ -17,8 +18,15 @@ class MainActivity : AppCompatActivity() ,
     BottomNavigationView.OnNavigationItemSelectedListener
 {
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        var testButton = findViewById<Button>(R.id.testButton)
+
+        testButton.setOnClickListener(){
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
         val bundle = Bundle()
         val navController = findNavController(fragment)
         val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
