@@ -3,10 +3,9 @@
 package com.example.myapplication
 
 import android.content.Intent
-import android.widget.Button
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.TextView
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
@@ -28,7 +27,7 @@ class MainActivity : AppCompatActivity() ,
         navController.navigate(R.id.offlineFragment, bundle)
         navView.setOnNavigationItemSelectedListener(this)
 
-        val returnButton = findViewById<TextView>(R.id.returnText)
+        val returnButton = findViewById<ImageView>(R.id.returnArrow)
         returnButton.setOnClickListener{
             startActivity(Intent(this, SelectionActivity::class.java))
         }
