@@ -21,12 +21,7 @@ class MainActivity : AppCompatActivity() ,
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var testButton = findViewById<Button>(R.id.testButton)
 
-        testButton.setOnClickListener(){
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-        }
         val bundle = Bundle()
         val navController = findNavController(fragment)
         val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
