@@ -10,4 +10,7 @@
     <string name="settings">Settings</string>
     <string name="manual_drive">Manual drive</string>
     <string name="map">Map</string>
+    <string name="logout">Log out</string>
+    <string name="mymowers">My mowers</string>
+    <string name="offline">Offline</string>
 </resources>

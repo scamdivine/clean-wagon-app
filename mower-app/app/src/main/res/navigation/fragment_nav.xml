@@ -16,9 +16,12 @@
         <action
             android:id="@+id/action_MapFragment_to_ManualDriveFragment"
             app:destination="@id/ManualDriveFragment" />
+        <action
+            android:id="@+id/action_MapFragment_to_OfflineFragment"
+            app:destination="@id/offlineFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SettingsFragment"
+        android:id="@+id/ManualDriveFragment"
         android:name="com.example.myapplication.ManualDriveFragment"
         android:label="fragment_edit_group"
         tools:layout="@layout/fragment_manual_drive" >
@@ -30,7 +33,7 @@
             app:destination="@id/ManualDriveFragment" />
     </fragment>
     <fragment
-        android:id="@+id/ManualDriveFragment"
+        android:id="@+id/SettingsFragment"
         android:name="com.example.myapplication.SettingsFragment"
         android:label="fragment_add_new"
         tools:layout="@layout/fragment_settings" >
@@ -40,5 +43,13 @@
         <action
             android:id="@+id/action_ManualDriveFragment_to_SettingsFragment"
             app:destination="@id/SettingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/offlineFragment"
+        android:name="com.example.myapplication.OfflineFragment"
+        android:label="OfflineFragment" >
+        <action
+            android:id="@+id/action_offlineFragment_to_MapFragment"
+            app:destination="@id/MapFragment" />
     </fragment>
 </navigation>
