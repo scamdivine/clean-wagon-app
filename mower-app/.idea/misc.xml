@@ -3,24 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Danie/Documents/GitHub/AI/clean-wagon-app/mower-app/app/src/main/res/drawable/active_background.xml" value="0.504" />
-        <entry key="..\:/Users/Danie/Documents/GitHub/AI/clean-wagon-app/mower-app/app/src/main/res/drawable/gradient_blue.xml" value="0.504" />
-        <entry key="..\:/Users/Danie/Documents/GitHub/AI/clean-wagon-app/mower-app/app/src/main/res/layout/activity_login.xml" value="0.5541666666666667" />
-        <entry key="..\:/Users/Danie/Documents/GitHub/AI/clean-wagon-app/mower-app/app/src/main/res/layout/activity_main.xml" value="0.5541666666666667" />
-        <entry key="..\:/Users/Danie/Documents/GitHub/AI/clean-wagon-app/mower-app/app/src/main/res/layout/activity_selection.xml" value="0.5541666666666667" />
+        <entry key="app/src/main/res/drawable/active_background.xml" value="0.504" />
+        <entry key="app/src/main/res/drawable/gradient_blue.xml" value="0.504" />
         <entry key="app/src/main/res/drawable/gradient_blue.xml" value="0.1165" />
         <entry key="app/src/main/res/drawable/text_view_border.xml" value="0.1175" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2758529663085938" />
+        <entry key="app/src/main/res/drawable/ic_toggle.xml" value="0.169" />
+        <entry key="app/src/main/res/drawable/ic_toggle_bg.xml" value="0.169" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_selection.xml" value="0.24965209960937496" />
+        <entry key="app/src/main/res/layout/activity_selection.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_manual_drive.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_map.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_offline.xml" value="0.1609375" />
+        <entry key="app/src/main/res/layout/fragment_map.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_offline.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_overview.xml" value="0.25729166666666664" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/bottom_menu_fragments.xml" value="0.1" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -13,15 +13,20 @@
         android:background="?android:attr/windowBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_menu_fragments"
-        android:id="@+id/bottomNavigationView" >
+        app:itemIconTint="@drawable/bottomnavigation"
+        app:itemTextColor="@color/black"
+        android:id="@+id/bottomNavigationView" />
 
-        <Button
-            android:id="@+id/testButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button" />
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
+    <ImageView
+        android:id="@+id/returnArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/returnmymowers"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <fragment

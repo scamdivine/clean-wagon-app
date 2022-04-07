@@ -1,0 +1,13 @@
+﻿Tider:
+28/3 - 16.30-17.05 möte med introduktion, alla närvarande förutom Justin
+* Vi har scrum roller, en PO, en SM och resten devs. Jag tog rollen som PO
+30/3 - 9.00-11.45 möte med gruppen, alla närvarande förutom Justin.
+* Skapade UML diagram över mobilapplikation
+* Byggde skelettkoden i Android studio
+* Startade en GIT för backend, en för  app och en för roboten
+* Skapade en trello för hantering av tickets
+* Gick igenom kravspecc
+31/3 - 13.00-17.00 möte med gruppen, alla närvarande förutom Justin.
+* Fortsatte med utveckling av appen
+* Implementerar fragments och variabler
+* Problem med Android studio vilket komplicerar till det för alla utvecklare i app teamet
