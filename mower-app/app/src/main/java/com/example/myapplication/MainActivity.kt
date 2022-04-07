@@ -2,8 +2,10 @@
 
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
@@ -22,6 +24,11 @@ class MainActivity : AppCompatActivity() ,
         val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         navController.navigate(R.id.offlineFragment, bundle)
         navView.setOnNavigationItemSelectedListener(this)
+
+        val returnButton = findViewById<TextView>(R.id.returnText)
+        returnButton.setOnClickListener{
+            startActivity(Intent(this, SelectionActivity::class.java))
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
