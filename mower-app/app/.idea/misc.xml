@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2085" />
         <entry key="src/main/res/drawable/aaaa.xml" value="0.2085" />
         <entry key="src/main/res/drawable/grey_border.xml" value="0.2085" />
         <entry key="src/main/res/layout/activity_login.xml" value="0.13703703703703704" />
-        <entry key="src/main/res/layout/fragment_settings.xml" value="0.18934783935546878" />
+        <entry key="src/main/res/layout/fragment_manual_drive.xml" value="0.1" />
+        <entry key="src/main/res/layout/fragment_map.xml" value="0.1" />
+        <entry key="src/main/res/layout/fragment_settings.xml" value="0.5100233995105665" />
         <entry key="src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2085" />
         <entry key="src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2085" />
       </map>

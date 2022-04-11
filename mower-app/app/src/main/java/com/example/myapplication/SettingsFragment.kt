@@ -17,6 +17,9 @@ class SettingsFragment: Fragment() {
         val view = inflater.inflate(R.layout.fragment_settings, container, false)
         view.findViewById<TextView>(R.id.mowerName).text = "HUSQVARNA AUTOMOWER® 450X";
         view.findViewById<ImageView>(R.id.mowerImage).setImageResource(R.drawable.facebook_logo)
-        return null
+        view.findViewById<ImageView>(R.id.batteryImage).setImageResource(R.drawable.facebook_logo)
+        view.findViewById<ImageView>(R.id.statusImage).setImageResource(R.drawable.facebook_logo)
+        view.findViewById<TextView>(R.id.batteryPercentage).text = "82%"
+        return view
     }
 }
