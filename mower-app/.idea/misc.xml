@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/STM/clean-wagon-app/mower-app/app/src/main/res/layout/activity_login.xml" value="0.358695652173913" />
+        <entry key="..\:/STM/clean-wagon-app/mower-app/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
+        <entry key="..\:/STM/clean-wagon-app/mower-app/app/src/main/res/layout/activity_selection.xml" value="0.358695652173913" />
+        <entry key="..\:/STM/clean-wagon-app/mower-app/app/src/main/res/layout/fragment_manual_drive.xml" value="0.22" />
+        <entry key="..\:/STM/clean-wagon-app/mower-app/app/src/main/res/layout/fragment_map.xml" value="0.358695652173913" />
+        <entry key="..\:/STM/clean-wagon-app/mower-app/app/src/main/res/layout/fragment_offline.xml" value="0.18802083333333333" />
+        <entry key="..\:/STM/clean-wagon-app/mower-app/app/src/main/res/layout/fragment_settings.xml" value="0.358695652173913" />
+        <entry key="..\:/STM/clean-wagon-app/mower-app/app/src/main/res/menu/bottom_menu_fragments.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_toggle.xml" value="0.169" />
         <entry key="app/src/main/res/drawable/ic_toggle_bg.xml" value="0.169" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
@@ -17,9 +25,6 @@
         <entry key="app/src/main/res/menu/bottom_menu_fragments.xml" value="0.1" />
       </map>
     </option>
-  </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

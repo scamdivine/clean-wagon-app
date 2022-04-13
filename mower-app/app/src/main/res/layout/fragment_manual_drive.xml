@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <TextView
         android:id="@+id/ManualDrive"
         android:layout_width="wrap_content"
@@ -16,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <ImageButton
         android:id="@+id/manualDriveButtonUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +24,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ManualDrive"
         app:srcCompat="@drawable/drivearrowup" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <ImageButton
         android:id="@+id/manualDriveButtonDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@id/manualDriveButtonUp"
         app:srcCompat="@drawable/drivearrowdown" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <ImageButton
         android:id="@+id/manualDriveButtonLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,12 +41,11 @@
         app:layout_constraintTop_toBottomOf="@id/manualDriveButtonUp"
         app:srcCompat="@drawable/drivearrowleft" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <ImageButton
         android:id="@+id/manualDriveButtonRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/manualDriveButtonUp"
         app:layout_constraintTop_toBottomOf="@id/manualDriveButtonUp"
         app:srcCompat="@drawable/drivearrowright" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
