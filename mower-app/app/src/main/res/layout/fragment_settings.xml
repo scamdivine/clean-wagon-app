@@ -14,23 +14,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/mowerName"
-            android:layout_width="160dp"
-            android:layout_height="46dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="125dp"
-            tools:layout_editor_absoluteY="71dp" />
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
+            <TextView
+                android:id="@+id/mowerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="125dp"
+                tools:layout_editor_absoluteY="71dp" />
 
-        <ImageView
-            android:id="@+id/mowerImage"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/mowerImage"
+                android:layout_marginTop="20dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,25 +48,27 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
                 android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/statusImage"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity=""
-                    tools:srcCompat="@drawable/facebook_logo" />
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical">
                 <TextView
                     android:id="@+id/batteryPercentage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="SSSSSSS"/>
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:layout_marginRight="10dp"/>
                 <ImageView
                     android:id="@+id/batteryImage"
                     android:layout_width="wrap_content"
@@ -68,44 +78,64 @@
             </LinearLayout>
         </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button1"
-            android:layout_width="330dp"
-            android:layout_height="71dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/grey_border"
-            android:text="Logbook"
-            android:textAllCaps="false"
-            android:textColor="@color/borderGrey"
-            android:textSize="20dp"
-            tools:layout_editor_absoluteX="40dp"
-            tools:layout_editor_absoluteY="292dp" />
+            android:layout_marginTop="20dp">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button2"
-            android:layout_width="330dp"
-            android:layout_height="71dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/grey_border"
-            android:text="Edit Profile"
-            android:textAllCaps="false"
-            android:textColor="@color/borderGrey"
-            android:textSize="20dp"
-            tools:layout_editor_absoluteX="40dp"
-            tools:layout_editor_absoluteY="377dp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button1"
+                android:layout_width="330dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/grey_border"
+                android:text="Logbook"
+                android:textAllCaps="false"
+                android:textColor="@color/borderGrey"
+                android:textSize="20dp"
+                tools:layout_editor_absoluteX="40dp"
+                tools:layout_editor_absoluteY="292dp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button3"
-            android:layout_width="330dp"
-            android:layout_height="71dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/grey_border"
-            android:text="Edit Mower"
-            android:textAllCaps="false"
-            android:textColor="@color/borderGrey"
-            android:textSize="20dp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button2"
+                android:layout_width="330dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/grey_border"
+                android:text="Edit Profile"
+                android:textAllCaps="false"
+                android:textColor="@color/borderGrey"
+                android:textSize="20dp"
+                tools:layout_editor_absoluteX="40dp"
+                tools:layout_editor_absoluteY="377dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button3"
+                android:layout_width="330dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/grey_border"
+                android:text="Edit Mower"
+                android:textAllCaps="false"
+                android:textColor="@color/borderGrey"
+                android:textSize="20dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button4"
+                android:layout_width="330dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/red_border"
+                android:text="Log Out"
+                android:textAllCaps="false"
+                android:textColor="@color/danger"
+                android:textSize="20dp" />
+        </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

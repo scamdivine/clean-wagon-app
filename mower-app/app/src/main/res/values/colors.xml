@@ -12,4 +12,5 @@
     <color name="lightBlue">#81D5FB</color>
     <color name="borderGrey">#545252</color>
     <color name="lightGrey">#F9F7F7</color>
+    <color name="danger">#E05B5B</color>
 </resources>
