@@ -1,10 +1,12 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -25,7 +27,7 @@ class SettingsFragment: Fragment() {
         val batteryTextView = view.findViewById<TextView>(R.id.batteryPercentage)
         val statusImageView = view.findViewById<ImageView>(R.id.statusImage)
 
-        view.findViewById<TextView>(R.id.mowerName).text = "HUSQVARNA AUTOMOWER® 450X";
+        view.findViewById<TextView>(R.id.mowerName).text = mowerName;
         view.findViewById<ImageView>(R.id.mowerImage).setImageResource(mowerImage)
         view.findViewById<TextView>(R.id.batteryPercentage).text = batteryPercentage.toString() + "%";
 
@@ -43,6 +45,11 @@ class SettingsFragment: Fragment() {
         } else {
             batteryImageView.setImageResource(R.drawable.battery_low)
             batteryTextView.setTextColor(Color.parseColor("#F24E1E"))
+        }
+
+        val logbookButton = view.findViewById<Button>(R.id.logbookButton)
+        logbookButton.setOnClickListener{
+            startActivity(Intent(context, LogbookActivity::class.java))
         }
         return view
     }
