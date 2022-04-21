@@ -24,6 +24,7 @@ class SelectionActivity : AppCompatActivity() {
         val batteryTextView = findViewById<TextView>(R.id.batteryTextView)
         val leftArrow = findViewById<ImageView>(R.id.arrowLeft)
         val rightArrow = findViewById<ImageView>(R.id.arrowRight)
+        val addMower = findViewById<ImageView>(R.id.addMower)
         val selectionFragment = SelectionFragment()
         var currentMower = "Husqvarna Automower 105"
         var batteryLvl = 75
@@ -76,9 +77,11 @@ class SelectionActivity : AppCompatActivity() {
             println(currentMowerCount)
         }
         selectMowerButton.setOnClickListener(){
-            supportFragmentManager.beginTransaction().add(R.id.container, selectionFragment).commit()
-            //val intent =  Intent(this, MainActivity::class.java)
-            //startActivity(intent)
+            val intent =  Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+        addMower.setOnClickListener{
+            supportFragmentManager.beginTransaction().add(R.id.container, selectionFragment).addToBackStack("SelectionActivity").commit()
         }
     }
 }
