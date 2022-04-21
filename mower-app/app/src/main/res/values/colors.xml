@@ -13,4 +13,8 @@
     <color name="borderGrey">#545252</color>
     <color name="lightGrey">#F9F7F7</color>
     <color name="danger">#E05B5B</color>
+    <color name="Green">#95E05B</color>
+    <color name="Orange">#F2C759</color>
+    <color name="Red">#F24E1E</color>
+    <color name="transparentBlack">#66000000</color>
 </resources>

@@ -3,8 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+ 
+        <entry key="app/src/main/res/drawable/active_background.xml" value="0.504" />
+        <entry key="app/src/main/res/drawable/gradient_blue.xml" value="0.1165" />
         <entry key="app/src/main/res/drawable/ic_toggle.xml" value="0.169" />
         <entry key="app/src/main/res/drawable/ic_toggle_bg.xml" value="0.169" />
+        <entry key="app/src/main/res/drawable/text_view_border.xml" value="0.1175" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_selection.xml" value="0.1" />

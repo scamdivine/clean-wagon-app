@@ -13,9 +13,8 @@ import androidx.fragment.app.Fragment
 
 class SettingsFragment: Fragment() {
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstantState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         val batteryPercentage = 24;
         val mowerName = "HUSQVARNA AUTOMOWER® 450X"
