@@ -24,11 +24,12 @@ class SelectionFragment : Fragment() {
         val arrayAdapter: ArrayAdapter<*>
         val addMowerFragment = AddMowerFragment()
         val names = arrayOf(
-            "Virat Kohli", "Rohit Sharma", "Steve Smith",
-            "Kane Williamson", "Ross Taylor"
+            "Automower 105", "Automower 305", "Automower 310",
+            "Automower 315", "Automower 420", "Automower 440",
+            "Automower 405", "Automower 415"
         )
         val mowerImages = arrayOf( R.drawable.mower_105,R.drawable.mower_105,R.drawable.mower_105,
-            R.drawable.mower_105,R.drawable.mower_105,)
+            R.drawable.mower_105,R.drawable.mower_105,R.drawable.mower_105,R.drawable.mower_105,R.drawable.mower_105,)
 
         mowerArrayList = ArrayList()
 
