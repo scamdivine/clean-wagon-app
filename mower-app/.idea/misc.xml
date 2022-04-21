@@ -3,21 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/STM/clean-wagon-app/mower-app/app/src/main/res/layout/activity_login.xml" value="0.358695652173913" />
-        <entry key="..\:/STM/clean-wagon-app/mower-app/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
-        <entry key="..\:/STM/clean-wagon-app/mower-app/app/src/main/res/layout/activity_selection.xml" value="0.358695652173913" />
-        <entry key="..\:/STM/clean-wagon-app/mower-app/app/src/main/res/layout/fragment_manual_drive.xml" value="0.22" />
-        <entry key="..\:/STM/clean-wagon-app/mower-app/app/src/main/res/layout/fragment_map.xml" value="0.358695652173913" />
-        <entry key="..\:/STM/clean-wagon-app/mower-app/app/src/main/res/layout/fragment_offline.xml" value="0.18802083333333333" />
-        <entry key="..\:/STM/clean-wagon-app/mower-app/app/src/main/res/layout/fragment_settings.xml" value="0.358695652173913" />
-        <entry key="..\:/STM/clean-wagon-app/mower-app/app/src/main/res/menu/bottom_menu_fragments.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-anydpi/settings.xml" value="0.196" />
+        <entry key="app/src/main/res/drawable/bottomnavigation.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_toggle.xml" value="0.169" />
         <entry key="app/src/main/res/drawable/ic_toggle_bg.xml" value="0.169" />
+        <entry key="app/src/main/res/drawable/selector.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_map.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_selection.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_bluetooth_list.xml" value="0.221875" />
         <entry key="app/src/main/res/layout/fragment_manual_drive.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_map.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_map.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_offline.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_overview.xml" value="0.25729166666666664" />
@@ -31,5 +28,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1" />
+      </ProjectState>
+    </option>
   </component>
 </project>
