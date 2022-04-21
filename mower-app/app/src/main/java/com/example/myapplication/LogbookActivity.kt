@@ -40,7 +40,8 @@ class LogbookActivity: AppCompatActivity() {
         }
 
         returnButton.setOnClickListener{
-            startActivity(Intent(this, MainActivity::class.java))
+            val intent = Intent(this, SettingsFragment::class.java)
+            startActivity(intent)
         }
     }
 }

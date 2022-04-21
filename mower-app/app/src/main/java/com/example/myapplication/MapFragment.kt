@@ -5,9 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
+import java.io.Serializable
 
+class Coordinate(val x_axis: Float, val y_axis: Float, val hasEvent: Boolean)  {
+    var x = x_axis
+    var y = y_axis
+    var event = hasEvent
+}
 
 class MapFragment: Fragment() {
     override fun onCreateView(
@@ -17,6 +25,29 @@ class MapFragment: Fragment() {
         val view = inflater.inflate(R.layout.fragment_map, container, false)
         view.findViewById<ImageButton>(R.id.toggleButtonOn).setOnClickListener{
             findNavController(view).navigate(R.id.action_MapFragment_to_OfflineFragment)
+        }
+        val coordinates = arrayOf(
+            Coordinate(50.0F, 50.0F, false),
+            Coordinate(100.0F, 100.0F, false),
+            Coordinate(200.0F, 200.0F, true),
+            Coordinate(200.0F, 300.0F, false),
+        )
+
+        val mapSquare = view.findViewById<RelativeLayout>(R.id.mapSquare)
+        val startingPoint = ImageView(context)
+        startingPoint.setImageResource(R.drawable.coordinate)
+        startingPoint.x = 100.0F
+        startingPoint.y = 700.0F
+        mapSquare.addView(startingPoint)
+        for (coordinate in coordinates) {
+            var newPoint = ImageView(context)
+            if (!coordinate.event)
+                newPoint.setImageResource(R.drawable.coordinate)
+            else
+                newPoint.setImageResource(R.drawable.eventmap)
+            newPoint.x = (100.0F + coordinate.x)
+            newPoint.y = (700.0F - coordinate.y)
+            mapSquare.addView(newPoint)
         }
         return view
     }
