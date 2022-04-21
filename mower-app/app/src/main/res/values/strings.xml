@@ -13,4 +13,6 @@
     <string name="logout">Log out</string>
     <string name="mymowers">My mowers</string>
     <string name="offline">Offline</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="done">Done</string>
 </resources>
