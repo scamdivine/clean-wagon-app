@@ -1,0 +1,17 @@
+/********** Måndag 28/3 16:30 - 17:05 **********/
+Möte med gruppen om vilka som vill arbeta med vad innom projectet
+samt när nästa möte ska äga rum 
+
+
+/********** Onsdag 30/3 09:00-11:45 **********/
+Dagen började med ett möte med hela gruppen där vi började med att skapa en trello för tickets 
+planerade kommande vecka och bland anant delade upp de High-level requirements i mindre delar
+samt skapade tickets att göra för veckan.
+Skapade en ett github repository där koden till appen kan laddas upp.
+Skapade ett android studio project för utveckling av appen.
+Gjorde ett uml diagram för hur appen ska navigeras med hjälp av Simon och Alexis som också ska arbeta på appen
+
+/********** Torsdag 31/3 13:00-17:45 **********/
+focus för dagen ligger på att implementera navigerang mellan de olika aktiviteterna in appen
+när detta är klart började jag på desigen för log in activityn 
+dagen avslutades med att lösa mergeconflicts efter att ha satt ihop allt arbete till main baranchen
