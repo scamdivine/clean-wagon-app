@@ -23,6 +23,4 @@ class MainActivity : AppCompatActivity()
             startActivity(Intent(this, SelectionActivity::class.java))
         }
     }
-
-
 }
