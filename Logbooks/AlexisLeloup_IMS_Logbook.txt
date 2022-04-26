@@ -18,3 +18,25 @@ Since we needed to code with a native language, we decided to use Kotlin.
 31/3 - 4H :
 - Kept prototype development with Mower Selection, Map and Settings screens
 - Weekly meeting with the whole team to update other poles about our progression and preliminary goals for next week
+
+
+WEEK2 :
+04/04 - 1H:
+- Weekly meeting with the team to define our objectives for this week
+- Meeting with the app developement teem to define our tasks for the week
+
+05/04: 4H:
+- Kept prototype development with Manual Drive and Logbook screens
+- Asking feedback from mower and backend teams about prototype's features
+- Adding modifications on manual drive screen.
+- Adding a mower creation modal on the selection screen.
+
+06/04 - 4H :
+- Pair-programming on mower selection screen with Daniel to discover more about Kotlin since I never really worked with this technology
+- Programmation of first element for the settings page
+
+07/04 - 4H :
+
+- Fixing problems with Github
+- Kept creating the settings page and mower details layout
+- Meeting with the whole team to give an update on our work

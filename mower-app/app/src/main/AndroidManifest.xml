@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".MainActivity"
+            android:name=".SelectionActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LogbookActivity" />
+        <activity android:name=".NotificationActivity" />
         <activity android:name=".LoginActivity"/>
-        <activity android:name=".SelectionActivity"/>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".BluetoothActivity"/>
         <activity android:name=".BluetoothControllerActivity"/>
     </application>
