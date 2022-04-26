@@ -22,5 +22,16 @@ class MainActivity : AppCompatActivity()
         returnButton.setOnClickListener{
             startActivity(Intent(this, SelectionActivity::class.java))
         }
+        val bundle = Bundle().get("fragmentSelection")
+        if(bundle != null){
+            selectFragment(bundle)
+        }
+    }
+    private fun selectFragment(bundle: Any){
+        when (bundle) {
+            1 -> findNavController(R.id.fragment).navigate(R.id.ManualDrive)
+            2 -> findNavController(R.id.fragment).navigate(R.id.MapFragment)
+            3 -> findNavController(R.id.fragment).navigate(R.id.SettingsFragment)
+        }
     }
 }

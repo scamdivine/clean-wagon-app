@@ -8,11 +8,11 @@ import com.android.volley.toolbox.Volley
 import org.json.JSONArray
 import org.json.JSONObject
 
-class backendCommunication() {
+class BackendCommunication() {
     val jsonArray = JSONArray()
 
     fun getRequest(context: Context){
-        lateinit var text : JSONObject
+        lateinit var imageFromBackend : JSONObject
         var amountOfObjects = 0
         var goThrough = 0
         val queue = Volley.newRequestQueue(context)
@@ -21,8 +21,8 @@ class backendCommunication() {
             Request.Method.GET, url, null,
             { response ->
                 // Display the first 500 characters of the response string.
-                amountOfObjects = response.length()
-                text = response
+                //amountOfObjects = response.length()
+                imageFromBackend = response.getJSONObject("mowerID")
 
             },
             { error ->

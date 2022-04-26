@@ -13,4 +13,5 @@
     <string name="logout">Log out</string>
     <string name="mymowers">My mowers</string>
     <string name="offline">Offline</string>
+    <string name="refresh">Refresh</string>
 </resources>
