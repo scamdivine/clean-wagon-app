@@ -1,16 +1,19 @@
 package com.example.myapplication
 
-import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
 import android.content.Context
+import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.delay
 import java.io.IOException
 import java.util.*
 
@@ -23,38 +26,47 @@ class BluetoothControllerActivity : AppCompatActivity() {
         var m_isConnected: Boolean = false
         lateinit var m_address: String
     }
-
-    val REQUEST_ENABLE_BLUETOOTH = 1
-    val SEND_MOWER_FORWARD = 1
-    val SEND_MOWER_BACKWARD = 2
-    val SEND_MOWER_LEFT = 3
-    val SEND_MOWER_RIGHT = 4
-    val SEND_MOWER_STOP = 0
+    val SEND_MOWER_FORWARD = "FORWARD"
+    val SEND_MOWER_BACKWARD = "BACKWARD"
+    val SEND_MOWER_LEFT = "LEFT"
+    val SEND_MOWER_RIGHT = "RIGHT"
+    val SEND_MOWER_STOP = "STOPMOVING"
+    val SEND_MANUAL_CONNECT = "MANUALMODE"
+    val SEND_MANUAL_DISCONNECT = "MANUALDISCONNECT"
+    val SEND_START_AUTO_MODE = "AUTOMODE"
+    val SEND_STOP_AUTO_MODE = "STOPAUTOMODE"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bluetooth_controller)
         m_address = intent.getStringExtra(BluetoothActivity.EXTRA_ADDRESS)!!
-
         ConnectToDevice(this).execute()
-        findViewById<ImageButton>(R.id.manualDriveButtonUp).setOnClickListener{sendCommand(SEND_MOWER_FORWARD.toString())}
-        findViewById<ImageButton>(R.id.manualDriveButtonDown).setOnClickListener{sendCommand(SEND_MOWER_BACKWARD.toString())}
-        findViewById<ImageButton>(R.id.manualDriveButtonLeft).setOnClickListener{sendCommand(SEND_MOWER_LEFT.toString())}
-        findViewById<ImageButton>(R.id.manualDriveButtonRight).setOnClickListener{sendCommand(SEND_MOWER_RIGHT.toString())}
-        findViewById<ImageButton>(R.id.manualDriveStop).setOnClickListener{sendCommand(SEND_MOWER_STOP.toString())}
+        sendCommand(SEND_MANUAL_CONNECT)
+        Toast.makeText(this, intent.dataString, Toast.LENGTH_SHORT).show()
+        findViewById<ImageButton>(R.id.manualDriveButtonUp).setOnClickListener{sendCommand(SEND_MOWER_FORWARD)}
+        findViewById<ImageButton>(R.id.manualDriveButtonDown).setOnClickListener{sendCommand(SEND_MOWER_BACKWARD)}
+        findViewById<ImageButton>(R.id.manualDriveButtonLeft).setOnClickListener{sendCommand(SEND_MOWER_LEFT)}
+        findViewById<ImageButton>(R.id.manualDriveButtonRight).setOnClickListener{sendCommand(SEND_MOWER_RIGHT)}
+        findViewById<ImageButton>(R.id.manualDriveStop).setOnClickListener{sendCommand(SEND_MOWER_STOP)}
+        findViewById<ImageView>(R.id.returnArrow).setOnClickListener{
+            sendCommand(SEND_MANUAL_DISCONNECT)
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun sendCommand(input: String) {
         if (m_bluetoothSocket != null) {
             try{
                 m_bluetoothSocket!!.outputStream.write(input.toByteArray())
+                Toast.makeText(this, "successfully sent " + input, Toast.LENGTH_SHORT).show()
             } catch(e: IOException) {
                 e.printStackTrace()
             }
         }
     }
 
-    private fun disconnect() {
+    fun disconnect() {
         if (m_bluetoothSocket != null) {
             try {
                 m_bluetoothSocket!!.close()
@@ -70,7 +82,6 @@ class BluetoothControllerActivity : AppCompatActivity() {
     private class ConnectToDevice(c: Context) : AsyncTask<Void, Void, String>() {
         private var connectSuccess: Boolean = true
         private val context: Context
-
         init {
             this.context = c
         }
@@ -80,7 +91,7 @@ class BluetoothControllerActivity : AppCompatActivity() {
             m_progress = ProgressDialog.show(context, "Connecting...", "please wait")
         }
 
-        @SuppressLint("MissingPermission")
+        //@SuppressLint("MissingPermission")
         override fun doInBackground(vararg p0: Void?): String? {
             try {
                 if (m_bluetoothSocket == null || !m_isConnected) {
