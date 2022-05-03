@@ -19,7 +19,12 @@
             android:id="@+id/map"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/onmap"
+            android:src="@drawable/onmap"/>
+        <ImageView
+            android:id="@+id/mowerIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/mowericon"/>
 />
     </RelativeLayout>
 

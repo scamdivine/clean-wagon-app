@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.graphics.drawable.VectorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +10,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
-import java.io.Serializable
+
 
 class Coordinate(val x_axis: Float, val y_axis: Float, val hasEvent: Boolean)  {
     var x = x_axis
@@ -35,19 +36,26 @@ class MapFragment: Fragment() {
 
         val mapSquare = view.findViewById<RelativeLayout>(R.id.mapSquare)
         val startingPoint = ImageView(context)
-        startingPoint.setImageResource(R.drawable.coordinate)
-        startingPoint.x = 100.0F
-        startingPoint.y = 700.0F
+        startingPoint.setImageResource(R.drawable.startingpoint)
+        println("height = " + startingPoint.getDrawable().getIntrinsicWidth())
+        startingPoint.x = 500.0F
+        startingPoint.y = 400.0F
         mapSquare.addView(startingPoint)
+        val mowerIcon = view.findViewById<ImageView>(R.id.mowerIcon)
         for (coordinate in coordinates) {
-            var newPoint = ImageView(context)
-            if (!coordinate.event)
-                newPoint.setImageResource(R.drawable.coordinate)
-            else
-                newPoint.setImageResource(R.drawable.eventmap)
-            newPoint.x = (100.0F + coordinate.x)
-            newPoint.y = (700.0F - coordinate.y)
-            mapSquare.addView(newPoint)
+            if (coordinate == coordinates.last()) {
+                mowerIcon.x = (startingPoint.x + coordinates.last().x - 10)
+                mowerIcon.y = (startingPoint.y - coordinates.last().y - 10)
+            } else {
+                var newPoint = ImageView(context)
+                if (!coordinate.event)
+                    newPoint.setImageResource(R.drawable.coordinate)
+                else
+                    newPoint.setImageResource(R.drawable.eventmap)
+                newPoint.x = (startingPoint.x + coordinate.x)
+                newPoint.y = (startingPoint.y - coordinate.y)
+                mapSquare.addView(newPoint)
+            }
         }
         return view
     }
