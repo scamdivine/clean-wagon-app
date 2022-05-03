@@ -76,9 +76,15 @@ class SelectionActivity : AppCompatActivity() {
             }
             println(currentMowerCount)
         }
-        selectMowerButton.setOnClickListener(){
-            val intent =  Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        selectMowerButton.setOnClickListener{
+            if(deviceBluetoothAddress.isNullOrBlank()){
+                val intent = Intent(this, BluetoothActivity::class.java)
+                startActivity(intent)
+            }
+            else {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
         }
         addMower.setOnClickListener{
             supportFragmentManager.beginTransaction().add(R.id.container, selectionFragment).addToBackStack("SelectionActivity").commit()

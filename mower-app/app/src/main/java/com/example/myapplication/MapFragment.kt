@@ -8,8 +8,8 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation.findNavController
-import java.io.Serializable
+
+var toggledOn = false;
 
 class Coordinate(val x_axis: Float, val y_axis: Float, val hasEvent: Boolean)  {
     var x = x_axis
@@ -25,11 +25,27 @@ class MapFragment: Fragment() {
         val toggleon =  resources.getDrawable(R.drawable.toggleon)
         val toggleoff = resources.getDrawable(R.drawable.toggleoff)
         val view = inflater.inflate(R.layout.fragment_map, container, false)
+        if(toggledOn == false)
+        {
+            view.findViewById<ImageButton>(R.id.toggleButtonOn).setImageDrawable(toggleoff)
+        }
+        else {
+            view.findViewById<ImageButton>(R.id.toggleButtonOn).setImageDrawable(toggleon)
+        }
+
         view.findViewById<ImageButton>(R.id.toggleButtonOn).setOnClickListener{
-            if(view.findViewById<ImageButton>(R.id.toggleButtonOn).drawable.equals(toggleon))
+            if(view.findViewById<ImageButton>(R.id.toggleButtonOn).drawable.equals(toggleon)) {
+                toggledOn = false;
                 view.findViewById<ImageButton>(R.id.toggleButtonOn).setImageDrawable(toggleoff)
-            else
+                BluetoothControllerActivity().sendCommand(BluetoothControllerActivity().SEND_STOP_AUTO_MODE)
+                BluetoothControllerActivity().waitForAck()
+            }
+            else {
+                toggledOn = true;
                 view.findViewById<ImageButton>(R.id.toggleButtonOn).setImageDrawable(toggleon)
+                BluetoothControllerActivity().sendCommand(BluetoothControllerActivity().SEND_STOP_AUTO_MODE)
+                BluetoothControllerActivity().waitForAck()
+            }
         }
         val coordinates = arrayOf(
             Coordinate(50.0F, 50.0F, false),

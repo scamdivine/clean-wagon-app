@@ -14,11 +14,6 @@ import androidx.fragment.app.Fragment
 
 class ManualDriveFragment: Fragment() {
     var m_blueAdapter: BluetoothAdapter? = null
-    val REQUEST_ENABLE_BLUETOOTH = 1
-    val SEND_MOWER_FORWARD = 1
-    val SEND_MOWER_BACKWARD = 2
-    val SEND_MOWER_LEFT = 3
-    val SEND_MOWER_RIGHT = 4
 
     @Suppress("DEPRECATION")
     override fun onCreateView(
@@ -31,7 +26,7 @@ class ManualDriveFragment: Fragment() {
         val view = inflater.inflate(R.layout.fragment_manual_drive, container, false)
         val driveStop = view.findViewById<ImageButton>(R.id.manualDriveStop)
         driveStop.setOnClickListener{
-            val intent = Intent(activity, BluetoothActivity::class.java)
+            val intent = Intent(activity, BluetoothControllerActivity::class.java)
             startActivity(intent)
         }
         return view

@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.app.Dialog
 import android.app.ProgressDialog
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
@@ -8,13 +9,17 @@ import android.content.Context
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.DialogCompat
 import kotlinx.coroutines.delay
 import java.io.IOException
+import java.io.InputStream
 import java.util.*
 
 class BluetoothControllerActivity : AppCompatActivity() {
@@ -39,10 +44,10 @@ class BluetoothControllerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bluetooth_controller)
-        m_address = intent.getStringExtra(BluetoothActivity.EXTRA_ADDRESS)!!
+        m_address = deviceBluetoothAddress
         ConnectToDevice(this).execute()
-        sendCommand(SEND_MANUAL_CONNECT)
         Toast.makeText(this, intent.dataString, Toast.LENGTH_SHORT).show()
+        sendCommand(SEND_MANUAL_CONNECT)
         findViewById<ImageButton>(R.id.manualDriveButtonUp).setOnClickListener{sendCommand(SEND_MOWER_FORWARD)}
         findViewById<ImageButton>(R.id.manualDriveButtonDown).setOnClickListener{sendCommand(SEND_MOWER_BACKWARD)}
         findViewById<ImageButton>(R.id.manualDriveButtonLeft).setOnClickListener{sendCommand(SEND_MOWER_LEFT)}
@@ -55,7 +60,7 @@ class BluetoothControllerActivity : AppCompatActivity() {
         }
     }
 
-    private fun sendCommand(input: String) {
+    fun sendCommand(input: String) {
         if (m_bluetoothSocket != null) {
             try{
                 m_bluetoothSocket!!.outputStream.write(input.toByteArray())
@@ -116,6 +121,14 @@ class BluetoothControllerActivity : AppCompatActivity() {
                 m_isConnected = true
             }
             m_progress.dismiss()
+        }
+    }
+    fun waitForAck() {
+        val buffer = ByteArray(256)
+        var bytes = 0
+        val inputs = m_bluetoothSocket!!.inputStream
+        while (bytes == 0) {
+            bytes = inputs.read(buffer)
         }
     }
 }

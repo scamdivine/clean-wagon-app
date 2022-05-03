@@ -10,15 +10,12 @@ import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R.id.select_device_list
+var deviceBluetoothAddress = ""
 
 class BluetoothActivity : AppCompatActivity() {
     private var m_bluetoothAdapter: BluetoothAdapter? = null
     private lateinit var m_pairedDevices: Set<BluetoothDevice>
     private val REQUEST_ENABLE_BLUETOOTH = 1
-
-    companion object {
-        val EXTRA_ADDRESS: String = "Device_address"
-    }
 
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,9 +54,8 @@ class BluetoothActivity : AppCompatActivity() {
         findViewById<ListView>(select_device_list).adapter = adapter
         findViewById<ListView>(select_device_list).onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             val device: BluetoothDevice = list[position]
-            val address: String = device.address
-            val intent = Intent(this, BluetoothControllerActivity::class.java)
-            intent.putExtra(EXTRA_ADDRESS, address)
+            deviceBluetoothAddress = device.address
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }
