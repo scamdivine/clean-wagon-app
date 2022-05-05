@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.media.Image
 import android.os.AsyncTask
@@ -15,6 +16,7 @@ import org.json.JSONArray
 import java.net.HttpURLConnection
 import java.net.URL
 import android.util.Base64
+import androidx.core.graphics.createBitmap
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import org.json.JSONObject
@@ -69,69 +71,48 @@ class SplashScreenActivity : AppCompatActivity() {
                 x++
             }
             val url = "http://ec2-16-170-167-138.eu-north-1.compute.amazonaws.com/api/v1/images/ee3ed9270de1924b826ad3214adcca45"
-            val objectRequest = JsonObjectRequest(
-                Request.Method.GET, url, null,
-                { response ->
-                    // Display the first 500 characters of the response string.
-                    //amountOfObjects = response.length()
-                    imageFromBackend = response.getJSONObject("image")
-                    Log.d("response from backend", response.toString())
-
-                },
-                { error ->
-                    println("error")
-                  //  Toast.makeText(context, "Error!",
-                  //      Toast.LENGTH_SHORT).show()
-                })
-            Log.d("kukendååå", objectRequest.toString())
-            Log.d("image from backend", imageFromBackend.toString())
-
-            //queue.add(objectRequest)
             val events = AsyncTaskHandleJsonImage().execute(url)
             //val intent =  Intent(baseContext, SelectionActivity::class.java)
-        //    println("start activity")
-        //    startActivity(intent)
+            //println("start activity")
+            //startActivity(intent)
+
         }
     }
 
     inner class AsyncTaskHandleJsonImage : AsyncTask<String,String,String>(){
         override fun doInBackground(vararg url: String?): String {
             println("calling backend")
-            var text: String
+            var text: ByteArray
             val connection = URL(url[0]).openConnection() as HttpURLConnection
             try {
                 connection.connect()
-                text = connection.inputStream.use { it.reader().use { reader -> reader.readText() } }
+                text = connection.inputStream.readBytes()
             }finally {
                 connection.disconnect()
             }
-            return text
+            Log.d("text", text.toString())
+            print(text)
+            val bitmap = BitmapFactory.decodeByteArray(text, 0, text.size)
+            Log.d("bitmap", bitmap.toString())
+            val testImage = bitmap
+            val intent =  Intent(baseContext, SelectionActivity::class.java)
+            intent.putExtra("image", text)
+            println("start activity")
+            startActivity(intent)
+            print(bitmap)
+            return "bitmap"
         }
 
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
-
-            //val decodedByte = Base64.decode(result, Base64.DEFAULT)
-            //val bitmap = BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.size)
-            //Log.d("helvette", bitmap.toString())
-            //handleJsonImage(bitmap)
+            handleJsonImage(result)
         }
 
         private fun handleJsonImage(jsonString: String?){
-       //     val jsonArray = JSONArray(jsonString)
-         //   val jsonObject = jsonArray.getJSONObject(0)
-           // val testString = jsonObject.getString("image")
-            if (jsonString != null) {
-                Log.d("faaan", jsonString)
-            }
-            //val jsonArray = JSONArray(jsonString)
-
-            //println("yeye"+jsonArray[0])
-
-            val intent =  Intent(baseContext, SelectionActivity::class.java)
-            intent.putExtra("image", jsonString)
+            //val intent =  Intent(baseContext, SelectionActivity::class.java)
+            //intent.putExtra("image", jsonString)
             //println("start activity")
-            startActivity(intent)
+            //startActivity(intent)
         }
     }
 }

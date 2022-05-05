@@ -19,10 +19,8 @@ class SelectionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         println(listOfEvents)
         setContentView(R.layout.activity_selection)
-        val image = intent.extras?.getString("image")
-        val decodedByte = Base64.decode(image, Base64.DEFAULT)
-        val bitmap = BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.size)
-
+        val image = intent.extras?.getByteArray("image")
+        val bitmap = image?.let { BitmapFactory.decodeByteArray(image, 0, it.size) }
         val allMowers = arrayOf(1, 2, 3, 4)
         val selectMowerButton = findViewById<Button>(R.id.selectMowerButton)
         val mowerTextView = findViewById<TextView>(R.id.mowerTextView)
@@ -44,12 +42,12 @@ class SelectionActivity : AppCompatActivity() {
             leftArrow.alpha = 0.0f
             rightArrow.alpha = 0.0f
         }
-        //mowerStatus.setImageBitmap(bitmap)
-       if(isActive){
+        mowerStatus.setImageBitmap(bitmap)
+      /* if(isActive){
             mowerStatus.setImageResource(R.drawable.active_status)
         } else {
             mowerStatus.setImageResource(R.drawable.inactive_status)
-        }
+        }*/
         batteryTextView.text = batteryPresent
         mowerTextView.text = currentMower
         if (batteryLvl>50){
