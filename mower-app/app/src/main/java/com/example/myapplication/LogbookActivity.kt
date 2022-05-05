@@ -25,7 +25,7 @@ class LogbookActivity: AppCompatActivity() {
         val logbookLayout = findViewById<LinearLayout>(R.id.logbookLayout)
 
         var x = 0;
-        for (event in eventsArray){
+        for ((index, event) in eventsArray.withIndex()){
             val entry = LayoutInflater.from(this).inflate(R.layout.logbook_entry, null, false)
             entry.findViewById<ImageView>(R.id.entryScreenshot).setImageResource(event.screenshot)
             entry.findViewById<TextView>(R.id.entryDate).setText(event.date)
