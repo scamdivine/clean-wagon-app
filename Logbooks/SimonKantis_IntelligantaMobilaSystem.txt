@@ -6,8 +6,50 @@
 * Byggde skelettkoden i Android studio
 * Startade en GIT för backend, en för  app och en för roboten
 * Skapade en trello för hantering av tickets
-* Gick igenom kravspecc
+* Gick igenom kravspec
 31/3 - 13.00-17.00 möte med gruppen, alla närvarande förutom Justin.
 * Fortsatte med utveckling av appen
 * Implementerar fragments och variabler
 * Problem med Android studio vilket komplicerar till det för alla utvecklare i app teamet
+5/4 - 9.00 - 16.30
+* Sprint planning
+* Satte story points på trello
+* implementerat fragments
+* lägger till navigering
+* Lagt till i wbs
+* Börjat på en togglebutton
+6/4 - 08.00 - 12.00
+* Möte kl 8 i discord med Alexis och Daniel
+* Lagt in ett till fragment med en offline sida och löst navigeringen mellan fragments
+* Suttit med alexis och diskuterat lite frames som han skapat i Figma
+* Lagt in en bakåtpil som är clickable för att kunna gå ur fragments
+7/4 - 13.00 - 17.00
+* Missade mötet med alla teamleaders, Adina gick från vår grupp.
+* Mergar branches med Daniel och Alexis
+* Skapat low level requirements för applikationen
+* Slutfört fragments och börjat läsa på bluetooth kommunikation
+11/4 - 10.00 - 11.40
+* Sprint planning med hela teamet
+* Backlog grooming med applikationsutvecklarna
+* Planerade veckan med android teamet, hur vi ska lägga upp vårt arbete med vår grupp och hur vi ska samarbeta med de andra grupperna
+* Började arbeta med bluetooth kommandon från applikationen till mowern
+* Hemma sjuk i Covid
+12/4 - 8.00 - 22.00
+* Suttit själv och arbetat då jag har covid. Arbetat med koden hela dagen med undantag för raster
+* Har läst om socket connections vs BLE advertisement för att kunna välja rätt teknik till projektet
+* implementerat en BLE advertisement funktion då det var det vi kom fram till skulle användas men som vi återigen känner oss osäkra på
+19/4 - 8.00 - 15.00
+* Försöker ändra från att ha BLE advertisement till socket connections
+* Skrivit om tickets i trello
+* För dialog med backend för att hantera requests mellan backend och appen
+20/4 - 8.00 - 15.00, 18.00-22.30
+* Jobbat vidare med Bluetooth kommunikation 
+* Missade mötet med Alexis och Daniel, pratade med Robot och Backend teamen i skolan och glömde tiden
+* Börjat implementera GET requests från backend
+* Hittade en youtube video på hur man löser GET requests från backend och började implementera det
+21/4 - 8.00 - 16.00
+* Börjat testa GET requesten från backend
+* Skriver om fragments till activities för att lösa komplikationer
+* Scrapade idén om att göra om till activities, vi kör med fragments och fortsätter implementera kommunikation med backend och robot
+* Kom överens med Adina om att jag inte skulle gå på TL mötet utan att hon tar det själv så jag kan sitta med App teamet och merga arbetet
+* Alexis har gjort massa lösningar och jobbar på extra bra

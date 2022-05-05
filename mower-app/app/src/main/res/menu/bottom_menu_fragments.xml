@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/ManualDriveFragment"
-        android:title="@string/manual_drive"
-        android:icon="@drawable/manualdrive" />
+
 
     <item
         android:id="@+id/MapFragment"
         android:title="@string/map"
         android:icon="@drawable/map" />
+
+    <item
+        android:id="@+id/ManualDriveFragment"
+        android:title="@string/manual_drive"
+        android:icon="@drawable/manualdrive" />
 
     <item
         android:id="@+id/SettingsFragment"

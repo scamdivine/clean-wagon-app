@@ -22,9 +22,14 @@ class MapFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val toggleon =  resources.getDrawable(R.drawable.toggleon)
+        val toggleoff = resources.getDrawable(R.drawable.toggleoff)
         val view = inflater.inflate(R.layout.fragment_map, container, false)
         view.findViewById<ImageButton>(R.id.toggleButtonOn).setOnClickListener{
-            findNavController(view).navigate(R.id.action_MapFragment_to_OfflineFragment)
+            if(view.findViewById<ImageButton>(R.id.toggleButtonOn).drawable.equals(toggleon))
+                view.findViewById<ImageButton>(R.id.toggleButtonOn).setImageDrawable(toggleoff)
+            else
+                view.findViewById<ImageButton>(R.id.toggleButtonOn).setImageDrawable(toggleon)
         }
         val coordinates = arrayOf(
             Coordinate(50.0F, 50.0F, false),
