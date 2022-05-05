@@ -1,13 +1,14 @@
 package com.example.myapplication
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import java.io.Serializable
 
-class Notification(val entryScreenshot: Int, val entryType: String?, val entryDate: String?) : Serializable {
+class Notification(val entryScreenshot: String, val entryType: String?, val entryDate: String?) : Serializable {
     var screenshot = entryScreenshot
     var type = entryType
     var date = entryDate
@@ -36,6 +37,6 @@ class NotificationActivity: AppCompatActivity() {
         }
 
         findViewById<TextView>(R.id.notificationDate).text = notification.date
-        findViewById<ImageView>(R.id.notificationImage).setImageResource(notification.screenshot)
+        findViewById<ImageView>(R.id.notificationImage).setImageBitmap(imageMap.getValue(notification.screenshot))
     }
 }

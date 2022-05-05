@@ -17,8 +17,8 @@ class LogbookActivity: AppCompatActivity() {
         setContentView(R.layout.activity_logbook)
 
         val eventsArray : ArrayList<Notification> = ArrayList()
-        for (event in listOfEvents) {
-            eventsArray.add(Notification(R.drawable.camera_screenshot, event.eventType, "05/04/2022 - 17h33"))
+        for ((index, event) in listOfEvents.withIndex()) {
+            eventsArray.add(Notification(listOfEvents[index].imageID, event.eventType, "05/04/2022 - 17h33"))
         }
         val returnButton = findViewById<ImageView>(R.id.returnArrow)
 
@@ -27,7 +27,7 @@ class LogbookActivity: AppCompatActivity() {
         var x = 0;
         for ((index, event) in eventsArray.withIndex()){
             val entry = LayoutInflater.from(this).inflate(R.layout.logbook_entry, null, false)
-            entry.findViewById<ImageView>(R.id.entryScreenshot).setImageResource(event.screenshot)
+            entry.findViewById<ImageView>(R.id.entryScreenshot).setImageBitmap(imageMap.getValue(listOfEvents[index].imageID))
             entry.findViewById<TextView>(R.id.entryDate).setText(event.date)
             if (event.type == "Obstacle") {
                 entry.findViewById<TextView>(R.id.entryMessage).setText("I'm stuck, help me !")
