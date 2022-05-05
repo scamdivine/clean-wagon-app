@@ -15,9 +15,6 @@ import org.json.JSONArray
 import java.net.HttpURLConnection
 import java.net.URL
 import android.util.Base64
-import com.android.volley.Request
-import com.android.volley.toolbox.JsonObjectRequest
-import org.json.JSONObject
 
 var listOfEvents = ArrayList<Events>()
 var eventImage = String
@@ -53,7 +50,6 @@ class SplashScreenActivity : AppCompatActivity() {
 
         private fun handleJson(jsonString: String?){
             println(jsonString)
-            var imageFromBackend: JSONObject
             val jsonArray = JSONArray(jsonString)
             var x=0
             while (x < jsonArray.length()){
@@ -64,33 +60,15 @@ class SplashScreenActivity : AppCompatActivity() {
                     jsonObject.getString("event_type"),
                     jsonObject.getString("image_id"),
                     jsonObject.getString("object_desc"),
-                    )
+                )
                 )
                 x++
             }
-            val url = "http://ec2-16-170-167-138.eu-north-1.compute.amazonaws.com/api/v1/images/ee3ed9270de1924b826ad3214adcca45"
-            val objectRequest = JsonObjectRequest(
-                Request.Method.GET, url, null,
-                { response ->
-                    // Display the first 500 characters of the response string.
-                    //amountOfObjects = response.length()
-                    imageFromBackend = response.getJSONObject("image")
-                    Log.d("response from backend", response.toString())
-
-                },
-                { error ->
-                    println("error")
-                  //  Toast.makeText(context, "Error!",
-                  //      Toast.LENGTH_SHORT).show()
-                })
-            Log.d("kukendååå", objectRequest.toString())
-            Log.d("image from backend", imageFromBackend.toString())
-
-            //queue.add(objectRequest)
+            val url = "http://ec2-16-170-167-138.eu-north-1.compute.amazonaws.com/api/v1/images/b41edf34e9ac5661ab06dfcaacac699d"
             val events = AsyncTaskHandleJsonImage().execute(url)
-            //val intent =  Intent(baseContext, SelectionActivity::class.java)
-        //    println("start activity")
-        //    startActivity(intent)
+            val intent =  Intent(baseContext, SelectionActivity::class.java)
+            //    println("start activity")
+            //    startActivity(intent)
         }
     }
 
@@ -110,24 +88,15 @@ class SplashScreenActivity : AppCompatActivity() {
 
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
-
-            //val decodedByte = Base64.decode(result, Base64.DEFAULT)
-            //val bitmap = BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.size)
-            //Log.d("helvette", bitmap.toString())
-            //handleJsonImage(bitmap)
+            handleJson(result)
         }
 
-        private fun handleJsonImage(jsonString: String?){
-       //     val jsonArray = JSONArray(jsonString)
-         //   val jsonObject = jsonArray.getJSONObject(0)
-           // val testString = jsonObject.getString("image")
-            if (jsonString != null) {
-                Log.d("faaan", jsonString)
-            }
+        private fun handleJson(jsonString: String?){
+            println(jsonString)
+
             //val jsonArray = JSONArray(jsonString)
 
             //println("yeye"+jsonArray[0])
-
             val intent =  Intent(baseContext, SelectionActivity::class.java)
             intent.putExtra("image", jsonString)
             //println("start activity")
