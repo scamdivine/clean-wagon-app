@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.AsyncTask
 import android.util.Log
 import kotlinx.coroutines.GlobalScope

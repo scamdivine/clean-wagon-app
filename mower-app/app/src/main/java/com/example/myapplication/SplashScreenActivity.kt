@@ -22,30 +22,28 @@ import com.android.volley.toolbox.JsonObjectRequest
 import org.json.JSONObject
 
 var listOfEvents = ArrayList<Events>()
-var eventImage = String
+var imageMap = HashMap<String, Bitmap>()
 
 class SplashScreenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
-        var logoImage = findViewById<ImageView>(R.id.logo)
         val url = "http://ec2-16-170-167-138.eu-north-1.compute.amazonaws.com/api/v1/events/by-mowerid/2?limit=5"
-        val events = AsyncTaskHandleJson().execute(url)
+        AsyncTaskHandleJson().execute(url)
     }
 
     inner class AsyncTaskHandleJson : AsyncTask<String,String,String>(){
         override fun doInBackground(vararg url: String?): String {
-            println("calling backend")
-            var text: String
+            var event: String
             val connection = URL(url[0]).openConnection() as HttpURLConnection
             try {
                 connection.connect()
-                text = connection.inputStream.use { it.reader().use { reader -> reader.readText() } }
+                event = connection.inputStream.use { it.reader().use { reader -> reader.readText() } }
             }finally {
                 connection.disconnect()
             }
-            return text
+            return event
         }
 
         override fun onPostExecute(result: String?) {
@@ -54,65 +52,44 @@ class SplashScreenActivity : AppCompatActivity() {
         }
 
         private fun handleJson(jsonString: String?){
-            println(jsonString)
-            var imageFromBackend: JSONObject
             val jsonArray = JSONArray(jsonString)
             var x=0
             while (x < jsonArray.length()){
                 val jsonObject = jsonArray.getJSONObject(x)
                 listOfEvents.add(Events(
                     jsonObject.getString("coordinate_id"),
-                    //jsonObject.getString("journey_id"),
                     jsonObject.getString("event_type"),
                     jsonObject.getString("image_id"),
                     jsonObject.getString("object_desc"),
                     )
                 )
+                val url = listOfEvents[x].imageID
+                AsyncTaskHandleJsonImage().execute(url)
                 x++
             }
-            val url = "http://ec2-16-170-167-138.eu-north-1.compute.amazonaws.com/api/v1/images/ee3ed9270de1924b826ad3214adcca45"
-            val events = AsyncTaskHandleJsonImage().execute(url)
-            //val intent =  Intent(baseContext, SelectionActivity::class.java)
-            //println("start activity")
-            //startActivity(intent)
-
+            val intent =  Intent(baseContext, SelectionActivity::class.java)
+            startActivity(intent)
         }
     }
 
+
     inner class AsyncTaskHandleJsonImage : AsyncTask<String,String,String>(){
-        override fun doInBackground(vararg url: String?): String {
-            println("calling backend")
-            var text: ByteArray
-            val connection = URL(url[0]).openConnection() as HttpURLConnection
+        override fun doInBackground(vararg url: String?): String? {
+            var byteArray: ByteArray
+            val connection = URL("http://ec2-16-170-167-138.eu-north-1.compute.amazonaws.com/api/v1/images/"+url[0]).openConnection() as HttpURLConnection
             try {
                 connection.connect()
-                text = connection.inputStream.readBytes()
+                byteArray = connection.inputStream.readBytes()
             }finally {
                 connection.disconnect()
             }
-            Log.d("text", text.toString())
-            print(text)
-            val bitmap = BitmapFactory.decodeByteArray(text, 0, text.size)
-            Log.d("bitmap", bitmap.toString())
-            val testImage = bitmap
-            val intent =  Intent(baseContext, SelectionActivity::class.java)
-            intent.putExtra("image", text)
-            println("start activity")
-            startActivity(intent)
-            print(bitmap)
-            return "bitmap"
+            val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+            url[0]?.let { imageMap.put(it, bitmap) }
+            return ""
         }
 
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
-            handleJsonImage(result)
-        }
-
-        private fun handleJsonImage(jsonString: String?){
-            //val intent =  Intent(baseContext, SelectionActivity::class.java)
-            //intent.putExtra("image", jsonString)
-            //println("start activity")
-            //startActivity(intent)
         }
     }
 }
