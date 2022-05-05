@@ -7,10 +7,11 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import java.io.Serializable
 
-class Notification(val entryScreenshot: Int, val entryType: String?, val entryDate: String?) : Serializable {
-    var screenshot = entryScreenshot
-    var type = entryType
-    var date = entryDate
+class Notification : Serializable {
+    var entryScreenshot: Int = 0
+    var entryType: String? = null
+    var entryDate: String? = null
+    var entryStatus: Boolean? = false
 }
 
 class NotificationActivity: AppCompatActivity() {
@@ -25,17 +26,20 @@ class NotificationActivity: AppCompatActivity() {
         }
 
         val notification = intent.extras?.get("data") as Notification
-        if (notification.type == "Obstacle") {
+        if (notification.entryType == "collision") {
             findViewById<TextView>(R.id.notificationTitle).text = "I'm stuck, help me !"
             findViewById<TextView>(R.id.notificationDescription).text = "Your automower met an obstacle and is now stuck."
-            findViewById<ImageView>(R.id.notificationStatus).setImageResource(R.drawable.inactive_status)
         } else {
             findViewById<TextView>(R.id.notificationTitle).text = "I bumped into something !"
             findViewById<TextView>(R.id.notificationDescription).text = "Your automower met an obstacle and is now stuck."
-            findViewById<ImageView>(R.id.notificationStatus).setImageResource(R.drawable.active_status)
         }
 
-        findViewById<TextView>(R.id.notificationDate).text = notification.date
-        findViewById<ImageView>(R.id.notificationImage).setImageResource(notification.screenshot)
+        if (notification.entryStatus == true)
+            findViewById<ImageView>(R.id.notificationStatus).setImageResource(R.drawable.active_status)
+        else
+            findViewById<ImageView>(R.id.notificationStatus).setImageResource(R.drawable.inactive_status)
+
+        findViewById<TextView>(R.id.notificationDate).text = notification.entryDate
+        findViewById<ImageView>(R.id.notificationImage).setImageResource(notification.entryScreenshot)
     }
 }

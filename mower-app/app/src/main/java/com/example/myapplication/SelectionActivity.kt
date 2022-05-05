@@ -20,8 +20,8 @@ class SelectionActivity : AppCompatActivity() {
         println(listOfEvents)
         setContentView(R.layout.activity_selection)
         val image = intent.extras?.getString("image")
-        val decodedByte = Base64.decode(image, Base64.DEFAULT)
-        val bitmap = BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.size)
+        //val decodedByte = Base64.decode(image, Base64.DEFAULT)
+        //val bitmap = BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.size)
 
         val allMowers = arrayOf(1, 2, 3, 4)
         val selectMowerButton = findViewById<Button>(R.id.selectMowerButton)
@@ -44,6 +44,7 @@ class SelectionActivity : AppCompatActivity() {
             leftArrow.alpha = 0.0f
             rightArrow.alpha = 0.0f
         }
+        //mowerStatus.setImageBitmap(bitmap)
        if(isActive){
             mowerStatus.setImageResource(R.drawable.active_status)
         } else {
