@@ -1,6 +1,7 @@
 package com.example.myapplication
 
-import android.app.Dialog
+import android.Manifest
+import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
@@ -8,18 +9,15 @@ import android.bluetooth.BluetoothSocket
 import android.content.Context
 import android.content.Intent
 import android.os.AsyncTask
+import android.os.Build
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.DialogCompat
-import kotlinx.coroutines.delay
 import java.io.IOException
-import java.io.InputStream
 import java.util.*
 
 class BluetoothControllerActivity : AppCompatActivity() {
@@ -46,8 +44,8 @@ class BluetoothControllerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_bluetooth_controller)
         m_address = deviceBluetoothAddress
         ConnectToDevice(this).execute()
-        Toast.makeText(this, intent.dataString, Toast.LENGTH_SHORT).show()
-        sendCommand(SEND_MANUAL_CONNECT)
+        //Toast.makeText(this, intent.dataString, Toast.LENGTH_SHORT).show()
+        //sendCommand(SEND_MANUAL_CONNECT)
         findViewById<ImageButton>(R.id.manualDriveButtonUp).setOnClickListener{sendCommand(SEND_MOWER_FORWARD)}
         findViewById<ImageButton>(R.id.manualDriveButtonDown).setOnClickListener{sendCommand(SEND_MOWER_BACKWARD)}
         findViewById<ImageButton>(R.id.manualDriveButtonLeft).setOnClickListener{sendCommand(SEND_MOWER_LEFT)}
@@ -83,7 +81,12 @@ class BluetoothControllerActivity : AppCompatActivity() {
         }
         finish()
     }
-
+    private val requestMultiplePermissions =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            permissions.entries.forEach {
+                Log.d("test006", "${it.key} = ${it.value}")
+            }
+        }
     private class ConnectToDevice(c: Context) : AsyncTask<Void, Void, String>() {
         private var connectSuccess: Boolean = true
         private val context: Context
@@ -96,12 +99,19 @@ class BluetoothControllerActivity : AppCompatActivity() {
             m_progress = ProgressDialog.show(context, "Connecting...", "please wait")
         }
 
-        //@SuppressLint("MissingPermission")
+        @SuppressLint("MissingPermission")
         override fun doInBackground(vararg p0: Void?): String? {
+            //requestMultiplePermissions.launch(arrayOf(
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                //requestMultiplePermissions.launch(arrayOf(
+                Manifest.permission.BLUETOOTH_SCAN
+                //Manifest.permission.BLUETOOTH_CONNECT)
+            }
             try {
                 if (m_bluetoothSocket == null || !m_isConnected) {
                     m_bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
-                    val device: BluetoothDevice = m_bluetoothAdapter.getRemoteDevice(m_address)
+                    val device: BluetoothDevice = m_bluetoothAdapter.getRemoteDevice(
+                        deviceBluetoothAddress)
                     m_bluetoothSocket = device.createInsecureRfcommSocketToServiceRecord(m_myUUID)
                     BluetoothAdapter.getDefaultAdapter().cancelDiscovery()
                     m_bluetoothSocket!!.connect()
@@ -126,9 +136,12 @@ class BluetoothControllerActivity : AppCompatActivity() {
     fun waitForAck() {
         val buffer = ByteArray(256)
         var bytes = 0
-        val inputs = m_bluetoothSocket!!.inputStream
-        while (bytes == 0) {
-            bytes = inputs.read(buffer)
+        if(m_isConnected) {
+            val inputs = m_bluetoothSocket!!.inputStream.read(buffer)
+            while (bytes == 0) {
+                bytes = inputs
+            }
         }
     }
+
 }

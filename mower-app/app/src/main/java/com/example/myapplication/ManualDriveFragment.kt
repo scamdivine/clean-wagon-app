@@ -20,12 +20,12 @@ class ManualDriveFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         AdvertiseSettings.Builder()
         m_blueAdapter = getDefaultAdapter()
         val view = inflater.inflate(R.layout.fragment_manual_drive, container, false)
         val driveStop = view.findViewById<ImageButton>(R.id.manualDriveStop)
         driveStop.setOnClickListener{
+            BluetoothControllerActivity().sendCommand(BluetoothControllerActivity().SEND_MANUAL_CONNECT)
             val intent = Intent(activity, BluetoothControllerActivity::class.java)
             startActivity(intent)
         }

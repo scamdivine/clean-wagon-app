@@ -55,6 +55,8 @@ class BluetoothActivity : AppCompatActivity() {
         findViewById<ListView>(select_device_list).onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             val device: BluetoothDevice = list[position]
             deviceBluetoothAddress = device.address
+            Log.i("The BTaddr is:", deviceBluetoothAddress)
+            Toast.makeText(this, "BT addr is:" + deviceBluetoothAddress, Toast.LENGTH_LONG).show()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
