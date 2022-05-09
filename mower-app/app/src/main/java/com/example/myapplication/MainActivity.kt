@@ -42,6 +42,11 @@ class MainActivity : AppCompatActivity()
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        BluetoothControllerActivity().disconnect()
+    }
+
     private class ConnectToDevice(c: Context) : AsyncTask<Void, Void, String>() {
         private var connectSuccess: Boolean = true
         private val context: Context
