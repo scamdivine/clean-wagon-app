@@ -26,12 +26,13 @@ import java.util.*
 
 
 lateinit var bluetoothManager : BluetoothManager
+var m_myUUID: UUID = UUID.fromString("7be1fcb3-5776-42fb-91fd-2ee7b5bbb86d")
 
 
 @Suppress("DEPRECATION")
 class BluetoothControllerActivity : AppCompatActivity() {
     companion object {
-        var m_myUUID: UUID = UUID.fromString("7be1fcb3-5776-42fb-91fd-2ee7b5bbb86d")
+        //var m_myUUID: UUID = UUID.fromString("7be1fcb3-5776-42fb-91fd-2ee7b5bbb86d")
         var m_bluetoothSocket: BluetoothSocket? = null
         lateinit var m_progress: ProgressDialog
         lateinit var m_bluetoothAdapter: BluetoothAdapter
@@ -59,7 +60,7 @@ class BluetoothControllerActivity : AppCompatActivity() {
             checkPermissions(Manifest.permission.BLUETOOTH_SCAN, TEST_BLUETOOTH_SCAN)
             checkPermissions(Manifest.permission.BLUETOOTH_CONNECT, TEST_BLUETOOTH_CONNECT)
         }
-        ConnectToDevice(this).execute()
+        //ConnectToDevice(this).execute()
         //sendCommand(SEND_MANUAL_CONNECT)
         findViewById<ImageButton>(R.id.manualDriveButtonUp).setOnClickListener{sendCommand(SEND_MOWER_FORWARD)}
         findViewById<ImageButton>(R.id.manualDriveButtonDown).setOnClickListener{sendCommand(SEND_MOWER_BACKWARD)}
@@ -78,7 +79,7 @@ class BluetoothControllerActivity : AppCompatActivity() {
         if (m_bluetoothSocket != null) {
             try{
                 m_bluetoothSocket!!.outputStream.write(input.toByteArray())
-                Toast.makeText(this, "successfully sent " + input, Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "successfully sent " + input, Toast.LENGTH_SHORT).show()
             } catch(e: IOException) {
                 e.printStackTrace()
             }
@@ -113,7 +114,6 @@ class BluetoothControllerActivity : AppCompatActivity() {
         @SuppressLint("MissingPermission")
         override fun doInBackground(vararg p0: Void?): String? {
             try {
-
                 if (m_bluetoothSocket == null || !m_isConnected) {
                     m_bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
                     val device: BluetoothDevice = m_bluetoothAdapter.getRemoteDevice(
@@ -138,16 +138,6 @@ class BluetoothControllerActivity : AppCompatActivity() {
                 m_isConnected = true
             }
             m_progress.dismiss()
-        }
-    }
-    fun waitForAck() {
-        val buffer = ByteArray(256)
-        var bytes = 0
-        if(m_isConnected) {
-            val inputs = m_bluetoothSocket!!.inputStream.read(buffer)
-            while (bytes == 0) {
-                bytes = inputs
-            }
         }
     }
     fun checkPermissions(permission: String, requestCode:Int){

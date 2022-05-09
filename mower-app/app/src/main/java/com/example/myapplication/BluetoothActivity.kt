@@ -10,7 +10,7 @@ import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R.id.select_device_list
-var deviceBluetoothAddress = ""
+var deviceBluetoothAddress = "B8:27:EB:D1:8E:0D"
 lateinit var bluetoothAdapter : BluetoothAdapter
 
 class BluetoothActivity : AppCompatActivity() {

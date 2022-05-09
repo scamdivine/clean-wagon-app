@@ -38,13 +38,11 @@ class MapFragment: Fragment() {
                 toggledOn = false;
                 view.findViewById<ImageButton>(R.id.toggleButtonOn).setImageDrawable(toggleoff)
                 BluetoothControllerActivity().sendCommand(BluetoothControllerActivity().SEND_STOP_AUTO_MODE)
-                BluetoothControllerActivity().waitForAck()
             }
             else {
                 toggledOn = true;
                 view.findViewById<ImageButton>(R.id.toggleButtonOn).setImageDrawable(toggleon)
-                BluetoothControllerActivity().sendCommand(BluetoothControllerActivity().SEND_STOP_AUTO_MODE)
-                BluetoothControllerActivity().waitForAck()
+                BluetoothControllerActivity().sendCommand(BluetoothControllerActivity().SEND_START_AUTO_MODE)
             }
         }
         val coordinates = arrayOf(
