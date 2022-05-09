@@ -55,8 +55,10 @@ class BluetoothControllerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_bluetooth_controller)
         m_address = deviceBluetoothAddress
         bluetoothManager = this.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
-        checkPermissions(Manifest.permission.BLUETOOTH_SCAN, TEST_BLUETOOTH_SCAN)
-        checkPermissions(Manifest.permission.BLUETOOTH_CONNECT, TEST_BLUETOOTH_CONNECT)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            checkPermissions(Manifest.permission.BLUETOOTH_SCAN, TEST_BLUETOOTH_SCAN)
+            checkPermissions(Manifest.permission.BLUETOOTH_CONNECT, TEST_BLUETOOTH_CONNECT)
+        }
         ConnectToDevice(this).execute()
         //sendCommand(SEND_MANUAL_CONNECT)
         findViewById<ImageButton>(R.id.manualDriveButtonUp).setOnClickListener{sendCommand(SEND_MOWER_FORWARD)}
