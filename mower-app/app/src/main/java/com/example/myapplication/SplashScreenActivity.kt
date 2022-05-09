@@ -61,6 +61,7 @@ class SplashScreenActivity : AppCompatActivity() {
                     jsonObject.getString("event_type"),
                     jsonObject.getString("image_id"),
                     jsonObject.getString("object_desc"),
+                    jsonObject.getString("time"),
                 )
                 )
                 val url = listOfEvents[x].imageID

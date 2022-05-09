@@ -14,5 +14,5 @@ import java.net.URL
 
 data class Events(val coordinateID: String = "", /*val journeyID: String = "",*/
                   val eventType: String = "", val imageID: String = ""
-                  , val objectDesc: String = "") {
+                  , val objectDesc: String = "", val time: String = "") {
 }
