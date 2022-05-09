@@ -5,9 +5,11 @@ import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
+import android.bluetooth.BluetoothManager
 import android.bluetooth.BluetoothSocket
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
@@ -15,11 +17,18 @@ import android.util.Log
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import java.io.IOException
 import java.util.*
 
+
+lateinit var bluetoothManager : BluetoothManager
+
+
+@Suppress("DEPRECATION")
 class BluetoothControllerActivity : AppCompatActivity() {
     companion object {
         var m_myUUID: UUID = UUID.fromString("7be1fcb3-5776-42fb-91fd-2ee7b5bbb86d")
@@ -38,13 +47,17 @@ class BluetoothControllerActivity : AppCompatActivity() {
     val SEND_MANUAL_DISCONNECT = "MANUALDISCONNECT"
     val SEND_START_AUTO_MODE = "AUTOMODE"
     val SEND_STOP_AUTO_MODE = "STOPAUTOMODE"
+    private val TEST_BLUETOOTH_SCAN = 123
+    private val TEST_BLUETOOTH_CONNECT = 113
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bluetooth_controller)
         m_address = deviceBluetoothAddress
+        bluetoothManager = this.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+        checkPermissions(Manifest.permission.BLUETOOTH_SCAN, TEST_BLUETOOTH_SCAN)
+        checkPermissions(Manifest.permission.BLUETOOTH_CONNECT, TEST_BLUETOOTH_CONNECT)
         ConnectToDevice(this).execute()
-        //Toast.makeText(this, intent.dataString, Toast.LENGTH_SHORT).show()
         //sendCommand(SEND_MANUAL_CONNECT)
         findViewById<ImageButton>(R.id.manualDriveButtonUp).setOnClickListener{sendCommand(SEND_MOWER_FORWARD)}
         findViewById<ImageButton>(R.id.manualDriveButtonDown).setOnClickListener{sendCommand(SEND_MOWER_BACKWARD)}
@@ -57,6 +70,7 @@ class BluetoothControllerActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
 
     fun sendCommand(input: String) {
         if (m_bluetoothSocket != null) {
@@ -81,12 +95,6 @@ class BluetoothControllerActivity : AppCompatActivity() {
         }
         finish()
     }
-    private val requestMultiplePermissions =
-        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
-            permissions.entries.forEach {
-                Log.d("test006", "${it.key} = ${it.value}")
-            }
-        }
     private class ConnectToDevice(c: Context) : AsyncTask<Void, Void, String>() {
         private var connectSuccess: Boolean = true
         private val context: Context
@@ -99,21 +107,18 @@ class BluetoothControllerActivity : AppCompatActivity() {
             m_progress = ProgressDialog.show(context, "Connecting...", "please wait")
         }
 
+        @RequiresApi(Build.VERSION_CODES.S)
         @SuppressLint("MissingPermission")
         override fun doInBackground(vararg p0: Void?): String? {
-            //requestMultiplePermissions.launch(arrayOf(
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                //requestMultiplePermissions.launch(arrayOf(
-                Manifest.permission.BLUETOOTH_SCAN
-                //Manifest.permission.BLUETOOTH_CONNECT)
-            }
             try {
+
                 if (m_bluetoothSocket == null || !m_isConnected) {
                     m_bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
                     val device: BluetoothDevice = m_bluetoothAdapter.getRemoteDevice(
-                        deviceBluetoothAddress)
+                        m_address)
                     m_bluetoothSocket = device.createInsecureRfcommSocketToServiceRecord(m_myUUID)
-                    BluetoothAdapter.getDefaultAdapter().cancelDiscovery()
+                    //BluetoothManager.adapter.cancelDiscovery()
+                    //BluetoothAdapter.getDefaultAdapter().cancelDiscovery()
                     m_bluetoothSocket!!.connect()
                 }
             } catch (e: IOException) {
@@ -142,6 +147,39 @@ class BluetoothControllerActivity : AppCompatActivity() {
                 bytes = inputs
             }
         }
+    }
+    fun checkPermissions(permission: String, requestCode:Int){
+        if(ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_DENIED){
+            ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
+        }
+        else{
+            Toast.makeText(this, "Permission already granted!", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if(requestCode == TEST_BLUETOOTH_SCAN){
+            if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this, "SCAN Permission granted", Toast.LENGTH_LONG).show()
+            }
+            else{
+                Toast.makeText(this, "SCAN Permission NOT granted", Toast.LENGTH_LONG).show()
+            }
+        }
+        else if(requestCode == TEST_BLUETOOTH_CONNECT){
+            if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this, "SCAN Permission granted", Toast.LENGTH_LONG).show()
+            }
+            else{
+                Toast.makeText(this, "SCAN Permission NOT granted", Toast.LENGTH_LONG).show()
+            }
+        }
+
     }
 
 }

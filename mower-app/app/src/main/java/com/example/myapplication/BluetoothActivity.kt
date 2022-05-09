@@ -11,6 +11,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R.id.select_device_list
 var deviceBluetoothAddress = ""
+lateinit var bluetoothAdapter : BluetoothAdapter
 
 class BluetoothActivity : AppCompatActivity() {
     private var m_bluetoothAdapter: BluetoothAdapter? = null
@@ -23,6 +24,7 @@ class BluetoothActivity : AppCompatActivity() {
         setContentView(R.layout.activity_bluetooth)
 
         m_bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+        bluetoothAdapter = (m_bluetoothAdapter)!!
         if(m_bluetoothAdapter == null) {
             Toast.makeText(this, "this device doesn't support bluetooth", Toast.LENGTH_SHORT).show()
             return
