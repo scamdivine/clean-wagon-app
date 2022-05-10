@@ -73,3 +73,29 @@ WEEK 4 :
 21/04 - 2H : 
 - Display of mowers' coordinates on the map
 
+WEEK 5 :
+25/04 - 1H :
+- Weekly meeting with the team to define our objectives for this week
+- Meeting with the app developement teem to define our tasks for the week
+
+26/04 - 4H :
+- Researches about how to create mower's path
+- Working with Daniel onto finding a way to fetch and store logbook's entries images
+- Displaying different icons depending on the coordinate type
+
+WEEK 6 :
+02/05 - 1H :
+- Weekly meeting with the team to define our objectives for this week
+- Meeting with the app developement teem to define our tasks for the week
+
+05/05 - 4H :
+- Meeting with the whole team to make a summary of the project (technical, process, etc.)
+- Adding logbook's entries images previously stored by Daniel
+- Discussing prototype changes with the app team
+- Implementing mower's info on the main activity
+
+WEEK 7 :
+09/05 - 3H :
+- Meeting with the app developement teem to check what are the remaining tasks to be done
+- Fetching journeys data from backend
+- Using fetch data to build manual mower's path on the map
