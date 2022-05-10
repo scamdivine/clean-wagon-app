@@ -17,7 +17,7 @@ class SelectionActivity : AppCompatActivity() {
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        println(listOfEvents)
+        //println(listOfEvents)
         setContentView(R.layout.activity_selection)
         val allMowers = arrayOf(1, 2, 3, 4)
         val selectMowerButton = findViewById<Button>(R.id.selectMowerButton)

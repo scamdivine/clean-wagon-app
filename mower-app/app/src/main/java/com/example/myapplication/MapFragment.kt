@@ -11,13 +11,6 @@ import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
 
-
-class Coordinate(val x_axis: Float, val y_axis: Float, val hasEvent: Boolean)  {
-    var x = x_axis
-    var y = y_axis
-    var event = hasEvent
-}
-
 class MapFragment: Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,12 +20,6 @@ class MapFragment: Fragment() {
         view.findViewById<ImageButton>(R.id.toggleButtonOn).setOnClickListener{
             findNavController(view).navigate(R.id.action_MapFragment_to_OfflineFragment)
         }
-        val coordinates = arrayOf(
-            Coordinate(50.0F, 50.0F, false),
-            Coordinate(100.0F, 100.0F, false),
-            Coordinate(200.0F, 200.0F, true),
-            Coordinate(200.0F, 300.0F, false),
-        )
 
         val mapSquare = view.findViewById<RelativeLayout>(R.id.mapSquare)
         val startingPoint = ImageView(context)
@@ -41,19 +28,22 @@ class MapFragment: Fragment() {
         startingPoint.x = 500.0F
         startingPoint.y = 400.0F
         mapSquare.addView(startingPoint)
+        println(listOfJourneys)
         val mowerIcon = view.findViewById<ImageView>(R.id.mowerIcon)
-        for (coordinate in coordinates) {
-            if (coordinate == coordinates.last()) {
-                mowerIcon.x = (startingPoint.x + coordinates.last().x - 10)
-                mowerIcon.y = (startingPoint.y - coordinates.last().y - 10)
+        val coordinatesArray = coordinatesMap.getValue(listOfJourneys[0].id.toString())
+        println(coordinatesArray)
+        for (coordinate in coordinatesArray) {
+            if (coordinate == coordinatesArray.last()) {
+                mowerIcon.x = (startingPoint.x + (coordinatesArray.last().x * 10) - 10)
+                mowerIcon.y = (startingPoint.y - (coordinatesArray.last().y * 10) - 10)
             } else {
                 var newPoint = ImageView(context)
-                if (!coordinate.event)
+                if (coordinate.isEvent == 0)
                     newPoint.setImageResource(R.drawable.coordinate)
                 else
                     newPoint.setImageResource(R.drawable.eventmap)
-                newPoint.x = (startingPoint.x + coordinate.x)
-                newPoint.y = (startingPoint.y - coordinate.y)
+                newPoint.x = (startingPoint.x + (coordinate.x * 10))
+                newPoint.y = (startingPoint.y - (coordinate.y * 10))
                 mapSquare.addView(newPoint)
             }
         }
