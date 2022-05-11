@@ -2,10 +2,8 @@ package com.example.myapplication
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Base64
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -17,8 +15,8 @@ class SelectionActivity : AppCompatActivity() {
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        println(listOfEvents)
         setContentView(R.layout.activity_selection)
+
         val allMowers = arrayOf(1, 2, 3, 4)
         val selectMowerButton = findViewById<Button>(R.id.selectMowerButton)
         val mowerTextView = findViewById<TextView>(R.id.mowerTextView)
@@ -40,7 +38,7 @@ class SelectionActivity : AppCompatActivity() {
             leftArrow.alpha = 0.0f
             rightArrow.alpha = 0.0f
         }
-       if(isActive){
+        if(isActive){
             mowerStatus.setImageResource(R.drawable.active_status)
         } else {
             mowerStatus.setImageResource(R.drawable.inactive_status)
