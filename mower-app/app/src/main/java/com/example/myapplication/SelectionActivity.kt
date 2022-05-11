@@ -78,8 +78,8 @@ class SelectionActivity : AppCompatActivity() {
             }
             println(currentMowerCount)
         }
-        selectMowerButton.setOnClickListener(){
-            val intent =  Intent(this, MainActivity::class.java)
+        selectMowerButton.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
         addMower.setOnClickListener{

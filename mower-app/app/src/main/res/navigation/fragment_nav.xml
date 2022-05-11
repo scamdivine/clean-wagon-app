@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_nav"
-    app:startDestination="@id/MapFragment">
+    app:startDestination="@+id/MapFragment">
 
     <fragment
         android:id="@+id/MapFragment"
         android:name="com.example.myapplication.MapFragment"
-        android:label="fragment_completed"
+        android:label="fragment_map"
         tools:layout="@layout/fragment_map" >
         <action
             android:id="@+id/action_MapFragment_to_SettingsFragment"
@@ -16,27 +16,12 @@
         <action
             android:id="@+id/action_MapFragment_to_ManualDriveFragment"
             app:destination="@id/ManualDriveFragment" />
-        <action
-            android:id="@+id/action_MapFragment_to_OfflineFragment"
-            app:destination="@id/offlineFragment" />
     </fragment>
     <fragment
         android:id="@+id/ManualDriveFragment"
         android:name="com.example.myapplication.ManualDriveFragment"
-        android:label="fragment_edit_group"
+        android:label="fragment_manual_drive"
         tools:layout="@layout/fragment_manual_drive" >
-        <action
-            android:id="@+id/action_SettingsFragment_to_MapFragment"
-            app:destination="@id/MapFragment" />
-        <action
-            android:id="@+id/action_SettingsFragment_to_ManualDriveFragment"
-            app:destination="@id/ManualDriveFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/SettingsFragment"
-        android:name="com.example.myapplication.SettingsFragment"
-        android:label="fragment_add_new"
-        tools:layout="@layout/fragment_settings" >
         <action
             android:id="@+id/action_ManualDriveFragment_to_MapFragment"
             app:destination="@id/MapFragment" />
@@ -45,11 +30,15 @@
             app:destination="@id/SettingsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/offlineFragment"
-        android:name="com.example.myapplication.OfflineFragment"
-        android:label="OfflineFragment" >
+        android:id="@+id/SettingsFragment"
+        android:name="com.example.myapplication.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
         <action
-            android:id="@+id/action_offlineFragment_to_MapFragment"
+            android:id="@+id/action_SettingsFragment_to_MapFragment"
             app:destination="@id/MapFragment" />
+        <action
+            android:id="@+id/action_SettingsFragment_to_ManualDriveFragment"
+            app:destination="@id/ManualDriveFragment" />
     </fragment>
 </navigation>
