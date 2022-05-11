@@ -40,16 +40,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SelectionActivity"/>
         <activity android:name=".LogbookActivity" />
         <activity android:name=".NotificationActivity" />
         <activity android:name=".LoginActivity"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".BluetoothActivity"/>
         <activity android:name=".BluetoothControllerActivity"/>
-        <activity
-            android:name=".SelectionActivity"
-            android:exported="true">
-        </activity>
     </application>
 
 </manifest>
