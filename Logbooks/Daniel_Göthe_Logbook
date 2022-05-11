@@ -15,3 +15,32 @@ Gjorde ett uml diagram för hur appen ska navigeras med hjälp av Simon och Alex
 focus för dagen ligger på att implementera navigerang mellan de olika aktiviteterna in appen
 när detta är klart började jag på desigen för log in activityn 
 dagen avslutades med att lösa mergeconflicts efter att ha satt ihop allt arbete till main baranchen
+
+/********** Tisdag 5/4 13:00-17:00 **********/
+sluför navigering och mergar det till mainbranchen
+Skapar view för loggin sidan samt börjar med designen 
+lägger till speciall designade borders runt inputfields 
+
+/********** onsdag 6/4 09:00-12:00 **********/
+fortsätter med inloggning sidan
+mergar den till main när den är klar och börjar på activityn för att välja mower
+
+/********** Torsdag 7/4 13:00-17:00 **********/
+Börjar dagen med att hjälpa simon merga sin branch med main samt löser mergeconflicts
+fortsätter med grundläggande designen för selecmower activityn och ser till att den 
+dynamiskt kan ändras beroende på batterinivå/ status på mowern
+
+/********** Tisdag 12/4 09:00-12:00 **********/
+lägger till funktionalitet för att kunna hoppa mellan mowers för de användare som eventuellt har fler än en 
+
+/********** Onsdag 13/4 08:00-10:00 **********/
+Börjar lägga till möjligheten att lägga till nya flera mowers i appen 
+
+/********** Torsdag 21/4 13:00-17:00 **********/
+Gör en egen design på en listview, med en bild och text per object
+skapar en korrelelerande adappter för att kunna få en listview att displaya den skräddarsydda designen
+skapar en onClickListener som korrelerar med rätt object i listan av möjliga mowers att lägga till
+fortsätter att fixa mindre fel som blivit kvar från tidigre commits
+
+
+
