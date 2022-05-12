@@ -102,19 +102,26 @@ class MapFragment: Fragment() {
             val mowerIcon = view?.findViewById<ImageView>(R.id.mowerIcon)
             val coordinatesArray = coordinatesMap.getValue(listOfJourneys[listOfJourneys.size-1].id.toString())
             println(coordinatesArray)
+            var skipNext = false
             for (coordinate in coordinatesArray) {
-                if (coordinate == coordinatesArray.last()) {
-                    mowerIcon!!.x = (startingPoint.x + (coordinatesArray.last().x * 10) - 10)
-                    mowerIcon.y = (startingPoint.y - (coordinatesArray.last().y * 10) - 10)
+                if (skipNext){
+                    skipNext = false
                 } else {
-                    var newPoint = ImageView(context)
-                    if (coordinate.isEvent == 0)
-                        newPoint.setImageResource(R.drawable.coordinate)
-                    else
-                        newPoint.setImageResource(R.drawable.eventmap)
-                    newPoint.x = (startingPoint.x + (coordinate.x ))
-                    newPoint.y = (startingPoint.y - (coordinate.y))
-                    mapSquare?.addView(newPoint)
+                    if (coordinate == coordinatesArray.last()) {
+                        mowerIcon!!.x = (startingPoint.x + (coordinatesArray.last().x * 10) - 10)
+                        mowerIcon.y = (startingPoint.y - (coordinatesArray.last().y * 10) - 10)
+                    } else {
+                        var newPoint = ImageView(context)
+                        if (coordinate.isEvent == 0)
+                            newPoint.setImageResource(R.drawable.coordinate)
+                        else {
+                            newPoint.setImageResource(R.drawable.eventmap)
+                            skipNext = true
+                        }
+                        newPoint.x = (startingPoint.x + (coordinate.x ))
+                        newPoint.y = (startingPoint.y - (coordinate.y))
+                        mapSquare?.addView(newPoint)
+                    }
                 }
             }
             mainHandler.postDelayed(this, 1000)
