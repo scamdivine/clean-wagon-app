@@ -8,10 +8,11 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import java.io.Serializable
 
-class Notification(val entryScreenshot: String, val entryType: String?, val entryDate: String?) : Serializable {
+class Notification(val entryScreenshot: String, val entryType: String?, val entryDate: String?, val obstacleDescr: String?) : Serializable {
     var screenshot = entryScreenshot
     var type = entryType
     var date = entryDate
+    var obstacle = obstacleDescr
 }
 
 class NotificationActivity: AppCompatActivity() {
@@ -28,11 +29,11 @@ class NotificationActivity: AppCompatActivity() {
         val notification = intent.extras?.get("data") as Notification
         if (notification.type == "Obstacle") {
             findViewById<TextView>(R.id.notificationTitle).text = "I'm stuck, help me !"
-            findViewById<TextView>(R.id.notificationDescription).text = "Your automower met an obstacle and is now stuck."
+            findViewById<TextView>(R.id.notificationDescription).text = "Your automower met a " + notification.obstacle +  " obstacle and is now stuck."
             findViewById<ImageView>(R.id.notificationStatus).setImageResource(R.drawable.inactive_status)
         } else {
             findViewById<TextView>(R.id.notificationTitle).text = "I bumped into something !"
-            findViewById<TextView>(R.id.notificationDescription).text = "Your automower met an obstacle and is now stuck."
+            findViewById<TextView>(R.id.notificationDescription).text = "Your automower met a " + notification.obstacle + " obstacle and is now stuck."
             findViewById<ImageView>(R.id.notificationStatus).setImageResource(R.drawable.active_status)
         }
 

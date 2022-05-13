@@ -18,7 +18,7 @@ class LogbookActivity: AppCompatActivity() {
 
         val eventsArray : ArrayList<Notification> = ArrayList()
         for ((index, event) in listOfEvents.withIndex()) {
-            eventsArray.add(Notification(listOfEvents[index].imageID, event.eventType, event.time.slice(0..9)))
+            eventsArray.add(Notification(listOfEvents[index].imageID, event.eventType, event.time.slice(0..9), event.objectDesc))
         }
         val returnButton = findViewById<ImageView>(R.id.returnArrow)
 
