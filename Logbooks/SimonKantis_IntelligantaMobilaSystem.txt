@@ -53,3 +53,43 @@
 * Scrapade idén om att göra om till activities, vi kör med fragments och fortsätter implementera kommunikation med backend och robot
 * Kom överens med Adina om att jag inte skulle gå på TL mötet utan att hon tar det själv så jag kan sitta med App teamet och merga arbetet
 * Alexis har gjort massa lösningar och jobbar på extra bra
+24/4 - 10.30 - 11.30
+* Daniel skrev att vi hade fått ett fel i vår commit och kunde därför inte merga vår kod, hittade att en PNG fil inte hade pushats med och därför fick vi konflikten. Pushade koden på nytt och meddelade Daniel.
+* Fortsatte med att arbeta på getRequest från backend
+* Börjat implementera Bluetooth sockets eftersom vi tidigare sagt att vi ska använda advertisement så måste vi göra om
+25/4 - 11.00-12.00, 14.00-16.00
+* Haft sprint planning möte på förmiddagen där vi gick igenom vad vi ska göra under veckan. 
+* App teamet körde en backlog grooming session efter sprint planning där vi även scorade några tickets. 
+* Jobbar på eftermiddagen med bluetooth uppkopplingen till roboten
+26/4 - 8.00-12.00, 13.00-13.30
+* Sitter själv och arbetar med Bluetooth, tror det är färdigt men ingen i robot gruppen kan komma in idag för att köra lite tester
+* Fortsätter arbeta med GET requesten från backend, eftersom det inte är färdigt från deras sida kan jag inte börja testa mitt
+* Daniel kom in 10min för att hjälpa mig kolla igenom min kod lite snabbt
+* Lagt till en return knapp från Bluetooth Controller.
+27/4 - 8.00-12.00
+* Satt och arbetade med Daniel idag med och gjorde så pass långt att vi kunde börja testa bluetooth mot roboten. Vi lyckades skicka kommandon som roboten kan läsa in och nu kan de själva testa mot roboten.
+28/4 - 12.00-16.00
+* Arbetade med Daniel med att implentera GET request från backend.
+* Fixade en bugg med Bluetooth
+3/5  -  8.00-15.00
+* Adina hittade en bugg som gjorde att bluetooth kraschade. Har sett över koden och gjort lite justeringar.
+* Har implementerat en auto funktion så att roboten kan sättas i auto läget utan att stänga av. Kan dock ej testa utan robot teamet.
+* Arbetat med Daniel hela dagen. Alexis kom in på eftermiddagen.
+* Arbetar med att hämta bilder med en request från backend tillsammans med Alexis och Daniel. 
+5/5 - 12.00-18.00
+* Vi har återigen problem med Bluetooth som jag försöker fixa. Det har hänt något med Permissions som gör att vi inte kan använda det. Misstänker att det är en uppdatering som spökar..
+* Vi har haft ett möte där vi gick igenom lessons learnt
+* Jag har arbetat med att skriva testcases och lite kriterier för det
+* Gjort UML tillsammans med Robin för System architecture design
+9/5 - 11.30 - 15.30
+* Parprogrammerade med Daniel och han hjälpte mig att lösa problemen vi haft med Bluetooth.
+* Lagt in autonomous mode samt kollat så alla manuella kommandon fungerar.
+* Kollat igenom några av testerna och bett Adina komma hit för att testa mot roboten.
+* Börjat skriva dokumentation
+10/5 - 8.00 - 10.00
+* Sprint möte med app gruppen
+* Försöker avsluta tickets i backlog och skriva dokumentation
+12/5 - 8.30- 10.00
+* Fortsätter skriva på dokumentation själv idag då jag är hemma sjuk
+16/5 - 8.00-10.00
+* Skrev färdigt min del av dokumentationen
