@@ -99,3 +99,12 @@ WEEK 7 :
 - Meeting with the app developement teem to check what are the remaining tasks to be done
 - Fetching journeys data from backend
 - Using fetch data to build manual mower's path on the map
+
+12/05 - 4H :
+- Working with Daniel on the remaining things to do on Logbook and Map
+- Adding object description for each logbook entry and fixing size problem on images
+- Modification on the logbook data fetching process (Now fetching each time user access it)
+
+WEEK 8 :
+18/05 - 2H :
+- Adding description of design and architecture of the application in the "Software Design Description" GDocs file
