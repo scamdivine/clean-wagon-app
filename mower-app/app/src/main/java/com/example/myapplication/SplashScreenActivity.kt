@@ -8,6 +8,7 @@ import android.media.Image
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
@@ -25,6 +26,7 @@ var listOfEvents = ArrayList<Events>()
 var listOfJourneys = ArrayList<Journey>()
 var imageMap = HashMap<String, Bitmap>()
 var coordinatesMap = HashMap<String, ArrayList<Coordinates>>()
+var isStartUp = true
 
 class SplashScreenActivity : AppCompatActivity() {
 
@@ -73,8 +75,11 @@ class SplashScreenActivity : AppCompatActivity() {
                 AsyncTaskHandleJsonImage().execute(url)
                 x++
             }
-            val intent =  Intent(baseContext, SelectionActivity::class.java)
-            startActivity(intent)
+            Handler().postDelayed({
+                val intent =  Intent(baseContext, SelectionActivity::class.java)
+                startActivity(intent)
+                                  },5000)
+
         }
     }
 
@@ -118,6 +123,9 @@ class SplashScreenActivity : AppCompatActivity() {
         }
 
         private fun handleJson(jsonString: String?){
+            if (!listOfJourneys.isEmpty()){
+                isStartUp = false
+            }
             listOfJourneys.clear()
             val jsonArray = JSONArray(jsonString)
             var x=0
@@ -130,9 +138,16 @@ class SplashScreenActivity : AppCompatActivity() {
                         jsonObject.getString("end_time"),
                     )
                 )
-                val url = listOfJourneys[x].id.toString()
-                AsyncTaskHandleJsonCoordinates().execute(url)
+                if (isStartUp){
+                    val url = listOfJourneys[listOfJourneys.size-1].id.toString()
+                    AsyncTaskHandleJsonCoordinates().execute(url)
+                }
                 x++
+
+            }
+            if (!isStartUp){
+                val url = listOfJourneys[listOfJourneys.size-1].id.toString()
+                AsyncTaskHandleJsonCoordinates().execute(url)
             }
         }
     }

@@ -91,7 +91,7 @@ class MapFragment: Fragment() {
             if (toggledOn){
                 backendRequest()
             }
-
+            val sizeOfJurneyList= listOfJourneys.size
             val mapSquare = view?.findViewById<RelativeLayout>(R.id.mapSquare)
             val startingPoint = ImageView(context)
             startingPoint.setImageResource(R.drawable.startingpoint)
@@ -100,8 +100,9 @@ class MapFragment: Fragment() {
             startingPoint.y = 400.0F
             mapSquare?.addView(startingPoint)
             val mowerIcon = view?.findViewById<ImageView>(R.id.mowerIcon)
-            val coordinatesArray = coordinatesMap.getValue(listOfJourneys[listOfJourneys.size-1].id.toString())
+            val coordinatesArray = coordinatesMap.getValue(listOfJourneys[sizeOfJurneyList-1].id.toString())
             println(coordinatesArray)
+            mapSquare?.measuredHeight
             var skipNext = false
             for (coordinate in coordinatesArray) {
                 if (skipNext){
@@ -116,9 +117,8 @@ class MapFragment: Fragment() {
                             newPoint.setImageResource(R.drawable.coordinate)
                         else {
                             newPoint.setImageResource(R.drawable.eventmap)
-                            skipNext = true
                         }
-                        newPoint.x = (startingPoint.x + (coordinate.x ))
+                        newPoint.x = (startingPoint.x + (coordinate.x))
                         newPoint.y = (startingPoint.y - (coordinate.y))
                         mapSquare?.addView(newPoint)
                     }
