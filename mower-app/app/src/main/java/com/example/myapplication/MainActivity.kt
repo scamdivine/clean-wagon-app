@@ -35,8 +35,6 @@ class MainActivity : AppCompatActivity()
         val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         val navController = findNavController(R.id.fragment)
         navView.setupWithNavController(navController)
-
-
         val mowerName = "HUSQVARNA AUTOMOWER® 450X"
         val isActive = true
         val mowerImage = R.drawable.mower_105;
