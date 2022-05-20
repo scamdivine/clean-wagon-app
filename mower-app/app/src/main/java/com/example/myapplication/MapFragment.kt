@@ -4,6 +4,7 @@ import android.graphics.drawable.VectorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
 
 var toggledOn = false;
+var scaleX = 1
+var scaleY = 2
 
 class Coordinate(val x_axis: Float, val y_axis: Float, val hasEvent: Boolean)  {
     var x = x_axis
@@ -94,6 +97,7 @@ class MapFragment: Fragment() {
             val sizeOfJurneyList= listOfJourneys.size
             val mapSquare = view?.findViewById<RelativeLayout>(R.id.mapSquare)
             val startingPoint = ImageView(context)
+            mapSquare?.setBackgroundResource(R.drawable.map)
             startingPoint.setImageResource(R.drawable.startingpoint)
             println("height = " + startingPoint.getDrawable().getIntrinsicWidth())
             startingPoint.x = 500.0F
@@ -102,7 +106,7 @@ class MapFragment: Fragment() {
             val mowerIcon = view?.findViewById<ImageView>(R.id.mowerIcon)
             val coordinatesArray = coordinatesMap.getValue(listOfJourneys[sizeOfJurneyList-1].id.toString())
             println(coordinatesArray)
-            mapSquare?.measuredHeight
+            Log.d("testar vi", mapSquare!!.measuredWidth.toString())
             var skipNext = false
             for (coordinate in coordinatesArray) {
                 if (skipNext){
@@ -118,8 +122,12 @@ class MapFragment: Fragment() {
                         else {
                             newPoint.setImageResource(R.drawable.eventmap)
                         }
-                        newPoint.x = (startingPoint.x + (coordinate.x))
-                        newPoint.y = (startingPoint.y - (coordinate.y))
+                        if (startingPoint.x + (coordinate.x / scaleX) > mapSquare!!.measuredWidth)
+                            scaleX += 1
+                        if (startingPoint.y - (coordinate.x / scaleY) > mapSquare!!.measuredHeight)
+                            scaleY += 1
+                        newPoint.x = (startingPoint.x + (coordinate.x / scaleX))
+                        newPoint.y = (startingPoint.y - (coordinate.y / scaleY))
                         mapSquare?.addView(newPoint)
                     }
                 }
