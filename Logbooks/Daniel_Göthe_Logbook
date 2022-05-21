@@ -42,5 +42,29 @@ skapar en korrelelerande adappter för att kunna få en listview att displaya de
 skapar en onClickListener som korrelerar med rätt object i listan av möjliga mowers att lägga till
 fortsätter att fixa mindre fel som blivit kvar från tidigre commits
 
+/********** Måndag 25/4  **********/
+Helping simon mergin branches
 
+/********** Torsdag 28/4 13:00-17:00 **********/
+Creates splach screen and starts on api calls to backend
+
+/********** Tisdag 3/5 09:00-12:00 **********/
+changs so api calls takes place while loading 
+
+/********** Onsdag 4/5 13:00-17:00 **********/
+Requests api calls to recive images from backend 
+
+/********** Torsdag 5/5 13:00-17:00 **********/
+Decodes images and creats bitmaps
+binds image to specific event with key value pair
+
+/********** Onsdag 11/5 10:00-12:00 **********/
+Merges all brancesh to main and fixing bugs 
+
+/********** Torsdag 19/4 13:00-17:00 **********/
+Clean up code
+merging code 
+Changes map display to automaticly scales when the mower moves out of bounds 
+
+/********** Torsdag 21/4 13:00-17:00 **********/
 
