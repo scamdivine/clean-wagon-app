@@ -56,6 +56,7 @@ class SplashScreenActivity : AppCompatActivity() {
         }
 
         private fun handleJson(jsonString: String?){
+            listOfEvents.clear()
             val jsonArray = JSONArray(jsonString)
             var x=0
             while (x < jsonArray.length()){
@@ -117,6 +118,7 @@ class SplashScreenActivity : AppCompatActivity() {
         }
 
         private fun handleJson(jsonString: String?){
+            listOfJourneys.clear()
             val jsonArray = JSONArray(jsonString)
             var x=0
             while (x < jsonArray.length()){
