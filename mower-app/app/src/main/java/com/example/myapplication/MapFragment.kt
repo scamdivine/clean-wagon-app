@@ -1,6 +1,7 @@
 package com.example.myapplication
 
-import android.graphics.drawable.VectorDrawable
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -10,9 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation.findNavController
 
 var toggledOn = false;
 var scaleX = 1
@@ -68,34 +69,23 @@ class MapFragment: Fragment() {
         startingPoint.y = 400.0F
         mapSquare.addView(startingPoint)
         println(listOfJourneys)
-   /*     val mowerIcon = view.findViewById<ImageView>(R.id.mowerIcon)
-        val coordinatesArray = coordinatesMap.getValue(listOfJourneys[listOfJourneys.size-1].id.toString())
-        println(coordinatesArray)
-        for (coordinate in coordinatesArray) {
-            if (coordinate == coordinatesArray.last()) {
-                mowerIcon.x = (startingPoint.x + (coordinatesArray.last().x * 10) - 10)
-                mowerIcon.y = (startingPoint.y - (coordinatesArray.last().y * 10) - 10)
-            } else {
-                var newPoint = ImageView(context)
-                if (coordinate.isEvent == 0)
-                    newPoint.setImageResource(R.drawable.coordinate)
-                else
-                    newPoint.setImageResource(R.drawable.eventmap)
-                newPoint.x = (startingPoint.x + (coordinate.x * 10))
-                newPoint.y = (startingPoint.y - (coordinate.y * 10))
-                mapSquare.addView(newPoint)
-            }
-        }*/
         return view
     }
 
     private val updateMapTask = object : Runnable {
+        @SuppressLint("ResourceAsColor")
         override fun run() {
             if (toggledOn){
                 backendRequest()
             }
             val sizeOfJurneyList= listOfJourneys.size
             val mapSquare = view?.findViewById<RelativeLayout>(R.id.mapSquare)
+            var newMap = ImageView(context)
+            newMap.setLayoutParams(
+                LinearLayout.LayoutParams(1500, 800)
+            )
+            newMap.setImageResource(R.drawable.map_background)
+            mapSquare?.addView(newMap)
             val startingPoint = ImageView(context)
             mapSquare?.setBackgroundResource(R.drawable.map)
             startingPoint.setImageResource(R.drawable.startingpoint)
