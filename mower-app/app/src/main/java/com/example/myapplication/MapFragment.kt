@@ -58,21 +58,6 @@ class MapFragment: Fragment() {
             }
         }
 
-        val mapSquare = view.findViewById<RelativeLayout>(R.id.mapSquare)
-        println("okkk")
-        val map = ImageView(context)
-        map.setImageResource(R.drawable.onmap)
-        val mowerIcon = ImageView(context)
-        mowerIcon.setImageResource(R.drawable.mowericon)
-        mapSquare.addView(map)
-        mapSquare.addView(mowerIcon)
-
-        val startingPoint = ImageView(context)
-        startingPoint.setImageResource(R.drawable.startingpoint)
-        startingPoint.x = 500.0F
-        startingPoint.y = 400.0F
-        mapSquare.addView(startingPoint)
-        println(listOfJourneys)
    /*     val mowerIcon = view.findViewById<ImageView>(R.id.mowerIcon)
         val coordinatesArray = coordinatesMap.getValue(listOfJourneys[listOfJourneys.size-1].id.toString())
         println(coordinatesArray)
@@ -101,13 +86,19 @@ class MapFragment: Fragment() {
             }
 
             val mapSquare = view?.findViewById<RelativeLayout>(R.id.mapSquare)
+            mapSquare?.removeAllViews()
+            val map = ImageView(context)
+            map.setImageResource(R.drawable.onmap)
+            val mowerIcon = ImageView(context)
+            mowerIcon.setImageResource(R.drawable.mowericon)
+            mapSquare?.addView(map)
+            mapSquare?.addView(mowerIcon)
             val startingPoint = ImageView(context)
             startingPoint.setImageResource(R.drawable.startingpoint)
             println("height = " + startingPoint.getDrawable().getIntrinsicWidth())
             startingPoint.x = 500.0F
             startingPoint.y = 400.0F
             mapSquare?.addView(startingPoint)
-            val mowerIcon = view?.findViewById<ImageView>(R.id.mowerIcon)
             val coordinatesArray = coordinatesMap.getValue(listOfJourneys[listOfJourneys.size-1].id.toString())
             println(coordinatesArray)
             var skipNext = false
