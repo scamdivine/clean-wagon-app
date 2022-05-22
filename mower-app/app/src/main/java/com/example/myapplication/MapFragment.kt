@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ImageSwitcher
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
@@ -49,16 +50,22 @@ class MapFragment: Fragment() {
         }
 
         val mapSquare = view.findViewById<RelativeLayout>(R.id.mapSquare)
+        println("okkk")
+        val map = ImageView(context)
+        map.setImageResource(R.drawable.onmap)
+        val mowerIcon = ImageView(context)
+        mowerIcon.setImageResource(R.drawable.mowericon)
+        mapSquare.addView(map)
+        mapSquare.addView(mowerIcon)
+
         val startingPoint = ImageView(context)
         startingPoint.setImageResource(R.drawable.startingpoint)
-        println("height = " + startingPoint.getDrawable().getIntrinsicWidth())
         startingPoint.x = 500.0F
         startingPoint.y = 400.0F
         mapSquare.addView(startingPoint)
-        println(listOfJourneys)
-        val mowerIcon = view.findViewById<ImageView>(R.id.mowerIcon)
+
         val coordinatesArray = coordinatesMap.getValue(listOfJourneys[0].id.toString())
-        println(coordinatesArray)
+
         for (coordinate in coordinatesArray) {
             if (coordinate == coordinatesArray.last()) {
                 mowerIcon.x = (startingPoint.x + (coordinatesArray.last().x * 10) - 10)

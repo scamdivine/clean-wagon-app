@@ -73,6 +73,7 @@ class LogbookActivity: AppCompatActivity() {
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
             handleJson(result)
+            buildLogbook()
         }
 
         private fun handleJson(jsonString: String?){
@@ -92,7 +93,6 @@ class LogbookActivity: AppCompatActivity() {
                 AsyncTaskHandleJsonImage().execute(url)
                 x++
             }
-            buildLogbook()
         }
     }
 
