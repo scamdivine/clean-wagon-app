@@ -133,6 +133,8 @@ class MapFragment: Fragment() {
     override fun onResume() {
         super.onResume()
         mainHandler.post(updateMapTask)
+        val mapSquare = view?.findViewById<RelativeLayout>(R.id.mapSquare)
+        mapSquare?.removeAllViews()
     }
     fun backendRequest(){
         listOfJourneys.size
