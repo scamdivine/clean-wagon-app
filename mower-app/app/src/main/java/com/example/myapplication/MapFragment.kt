@@ -112,12 +112,12 @@ class MapFragment: Fragment() {
                         else {
                             newPoint.setImageResource(R.drawable.eventmap)
                         }
-                        if (startingPoint.x + (coordinate.x / scaleX) > mapSquare!!.measuredWidth)
+                        if (startingPoint.x + (coordinate.x * 2 / scaleX) > mapSquare!!.measuredWidth)
                             scaleX += 1
-                        if (startingPoint.y - (coordinate.x / scaleY) > mapSquare!!.measuredHeight)
+                        if (startingPoint.y - (coordinate.x * 2 / scaleY) > mapSquare!!.measuredHeight)
                             scaleY += 1
-                        newPoint.x = (startingPoint.x + (coordinate.x / scaleX))
-                        newPoint.y = (startingPoint.y - (coordinate.y / scaleY))
+                        newPoint.x = (startingPoint.x + (coordinate.x * 2 / scaleX))
+                        newPoint.y = (startingPoint.y - (coordinate.y * 2/ scaleY))
                         mapSquare?.addView(newPoint)
                     }
                 }
