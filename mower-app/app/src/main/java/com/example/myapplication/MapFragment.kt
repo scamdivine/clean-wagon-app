@@ -117,8 +117,8 @@ class MapFragment: Fragment() {
                             newPoint.setImageResource(R.drawable.eventmap)
                             skipNext = true
                         }
-                        newPoint.x = (startingPoint.x + (coordinate.x ))
-                        newPoint.y = (startingPoint.y - (coordinate.y))
+                        newPoint.x = (startingPoint.x + (coordinate.x /2 ))
+                        newPoint.y = (startingPoint.y - (coordinate.y / 2))
                         mapSquare?.addView(newPoint)
                     }
                 }
